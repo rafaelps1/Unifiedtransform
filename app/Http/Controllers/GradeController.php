@@ -49,7 +49,6 @@ class GradeController extends Controller
     public function tindex($teacher_id,$course_id,$exam_id,$section_id)
     {
       $this->addStudentsToCourse($teacher_id,$course_id,$exam_id,$section_id);
-
       $grades = $this->gradeService->getGradesByCourseExam($course_id, $exam_id);
       $gradesystems = $this->gradeService->getGradeSystemBySchoolIdGroupByName($grades);
 
@@ -107,7 +106,6 @@ class GradeController extends Controller
       $this->gradeService->exam_id = $request->exam_id;
       $this->gradeService->teacher_id = $request->teacher_id;
       $this->gradeService->section_id = $request->section_id;
-
       return $this->gradeService->returnRouteWithParameters('teacher-grade');
     }
 

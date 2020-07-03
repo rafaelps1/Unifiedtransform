@@ -102,7 +102,6 @@ class LibrarianTest extends TestCase
     public function can_see_some_personal_librarian_information(){
         $librarian1 = factory(User::class)->states('librarian')->create();
         $response = $this->get(url('/user', [$librarian1->student_code]));
-
         $response->assertStatus(200)
                 ->assertSeeText(e($librarian1->name))
                 ->assertSeeText(e($librarian1->nationality))

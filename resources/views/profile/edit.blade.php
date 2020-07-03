@@ -152,7 +152,6 @@
                                 @endif
                             </div>
                         </div>
-
                         @if($user->role == 'student')
 
                         <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }}">
