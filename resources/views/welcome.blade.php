@@ -11,75 +11,17 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 25px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            /* Source: https://codepen.io/quasimondo/pen/lDdrF */
-            #gradient
-            {
-            width: 100%;a
-            height: 800px;
-            padding: 0px;
-            margin: 0px;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ url('css/welcome.css') }}">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     </head>
     <body id="gradient">
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    {{config('app.name')}}
+                    {{substr(config('app.name'), 0, 11)}}
                 </div>
-                <p style="font-size: 25px;">@lang('Makes managing schools an amazing experience')</p>
+                <div class="subtitle">based on Unifiedtransform</div>
+                <div class="describe">@lang('Makes managing schools an amazing experience')</div>
                 <div class="links">
                     @if (Route::has('login'))
                         @auth
@@ -88,14 +30,11 @@
                             <a href="{{ route('login') }}">@lang('Login')</a>
                         @endauth
                     @endif
-                    <a href="https://github.com/changeweb/Unifiedtransform">
-                        <i class="fa fa-github"></i>
-                        @lang('GitHub')
-                    </a>
                 </div>
             </div>
         </div>
         <script src="{{asset('js/jquery-2.1.3.min.js')}}"></script>
+<<<<<<< HEAD
         <script>
             // Source: https://codepen.io/quasimondo/pen/lDdrF
             // Author: Mario Klingemann
@@ -161,5 +100,8 @@ var color2 = "rgb("+r2+","+g2+","+b2+")";
 
 setInterval(updateGradient,10);
         </script>
+=======
+        <script src="{{ url('js/welcome.js') }}"></script>
+>>>>>>> b8928b7... Change Welcome page; Split css and js files
     </body>
 </html>
