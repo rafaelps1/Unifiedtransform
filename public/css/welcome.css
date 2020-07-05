@@ -32,7 +32,8 @@ html, body {
 }
 
 .title {
-    font-size: 84px;
+    /* color: #8307f7db; */
+    font-size: 68px;
 }
 
 .subtitle {
@@ -60,7 +61,6 @@ html, body {
     margin-bottom: 30px;
 }
 
-/* Source: https://codepen.io/quasimondo/pen/lDdrF */
 #gradient {
     width: 100%;
     height: 800px;
