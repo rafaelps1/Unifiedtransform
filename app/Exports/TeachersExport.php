@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 class TeachersExport implements FromQuery,ShouldAutoSize,WithHeadings
 {
     private $headings = [
-        'Name', 
+        'Name',
         'Email',
         'Gender',
         'Teacher Code',
@@ -21,7 +21,7 @@ class TeachersExport implements FromQuery,ShouldAutoSize,WithHeadings
     ];
 
     private $headingsES = [
-        'Nombre', 
+        'Nombre',
         'Correo',
         'Genero',
         'Codigo del Maestro',
@@ -30,14 +30,26 @@ class TeachersExport implements FromQuery,ShouldAutoSize,WithHeadings
         'Dirección',
     ];
 
+    private $headingsPt = [ //for pt
+        'Nome',
+        'Email',
+        'Gênero',
+        'Código Professor',
+        'Grupo Sanguíneo',
+        'Telefone',
+        'Endereço'
+    ];
+
     public function __construct(int $year){
         $this->year = $year;
     }
 
     public function headings() : array
     {
-		$myLocale = App::getLocale(); 
-		if ($myLocale == "es-MX") {
+		$myLocale = App::getLocale();
+		if($myLocale == "pt-BR-MX") {
+            return $this->headingsPt; //pt-BR
+        } elseif ($myLocale == "es-MX") {
 			return $this->headingsES; //spanish
 		} else {
 			return $this->headings;	//english
