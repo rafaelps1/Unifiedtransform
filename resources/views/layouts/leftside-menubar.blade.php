@@ -16,7 +16,7 @@
   }
 
   .nav-link-text {
-    padding-left: 10%;
+    padding-left: 2%;
   }
 
   #side-navbar ul>li>a {
