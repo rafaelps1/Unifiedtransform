@@ -10,11 +10,7 @@ function loader_fade_out() {
 }
 
 function data_table_div() {
-    var myTable = $('.table-data-div').DataTable(
-        {
-            paging: false,
-            language: { url: '../pt-BR.json' }
-        });
+    var myTable = $('.table-data-div').DataTable({ paging: false });
 }
 
 function all_images() {
@@ -27,5 +23,5 @@ function all_images() {
 }
 
 function datepicker_format() {
-    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
+    $('.datepicker').datepicker({format: 'dd-mm-yyyy'});
 }

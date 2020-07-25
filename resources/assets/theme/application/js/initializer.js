@@ -23,5 +23,5 @@ function all_images() {
 }
 
 function datepicker_format() {
-    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
+    $('.datepicker').datepicker({format: 'dd-mm-yyyy'});
 }
