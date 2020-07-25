@@ -10,7 +10,11 @@ function loader_fade_out() {
 }
 
 function data_table_div() {
-    var myTable = $('.table-data-div').DataTable({ paging: false });
+    var myTable = $('.table-data-div').DataTable(
+        {
+            paging: false,
+            language: { url: '../pt-BR.json' }
+        });
 }
 
 function all_images() {
