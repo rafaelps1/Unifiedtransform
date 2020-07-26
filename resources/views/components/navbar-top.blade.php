@@ -46,7 +46,7 @@
                     <a href="#" class="nav-link dropdown-toggle nav-link-align-btn" data-toggle="dropdown" role="button"
                         aria-expanded="false" aria-haspopup="true">
                         <span class="label label-danger">
-                            {{ ucfirst(\Auth::user()->role) }}
+                            {{ __(ucfirst(\Auth::user()->role)) }}
                         </span>&nbsp;&nbsp;
                         @if(!empty(Auth::user()->pic_path))
                         <img src="{{asset('01-progress.gif')}}" data-src="{{url(Auth::user()->pic_path)}}" alt="Profile Picture"
