@@ -23,7 +23,7 @@
             @endforeach
         </select>
     @elseif($upload_type == 'syllabus')
-        <label for="classes">Class</label>
+        <label for="classes">@lang('Class')</label>
         <select id="classes" class="form-control" name="classes" required>
             @foreach($classes as $class)
             <option value="{{$class->id}}">

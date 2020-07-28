@@ -237,7 +237,8 @@
                                 <select id="version" class="form-control" name="version">
                                     <option selected="selected">@lang('Bangla')</option>
                                     <option>@lang('English')</option>
-									<option>@lang('Spanish')</option>
+									<option>@lang('Portuguese')</option>
+                                    <option>@lang('Spanish')</option>
                                 </select>
 
                                 @if ($errors->has('version'))
