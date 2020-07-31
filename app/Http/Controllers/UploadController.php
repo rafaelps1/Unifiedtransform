@@ -86,7 +86,6 @@ class UploadController extends Controller {
         'title' => 'required|string',
         'given_to' => 'required|int',
       ]);
-
       $tb = new \App\Certificate;
       $tb->file_path = 'storage/'.$path;
       $tb->title = $request->title;
