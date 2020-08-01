@@ -6,8 +6,8 @@
         <br/>
     @endif
     @if($upload_type == 'certificate')
-        <label for="sections">Certificate Given to Student Code:</label>
-        <input type="text" class="form-control" name="to_student_code" id="to_student_code" placeholder="Student Code here..." required>
+        <label for="sections">@lang('Certificate Given to Student Code:')</label>
+        <input type="text" class="form-control" name="to_student_code" id="to_student_code" placeholder="@lang('Student Code here...')" required>
         <br/>
     @endif
     @if($upload_type == 'routine')
