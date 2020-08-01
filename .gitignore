@@ -9,9 +9,12 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+*.DS_Store
 .env
+.phpunit.result.cache
 .php_cs.cache
 .rnd
 /database/database.*
 .env.dusk.local
 _ide_helper.php
+.phpunit.result.cache
