@@ -3,17 +3,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/moment/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js" integrity="sha256-FT1eN+60LmWX0J8P25UuTjEEE0ZYvpC07nnU6oFKFuI=" crossorigin="anonymous"></script>
-    
+
     <?php
     if(count($attendances) > 0){
       $events = array();
       foreach ($attendances as $attendance){
         if($attendance->present == 1){
-          $events[] = ['title'=> "Present", 'start' => $attendance->created_at, 'end' => $attendance->updated_at, 'color'=>'green'];
+          $events[] = ['title'=> "Presente", 'start' => $attendance->created_at, 'end' => $attendance->updated_at, 'color'=>'green'];
         } else if($attendance->present == 2){
-          $events[] = ['title'=> "Escaped", 'start' => $attendance->created_at, 'end' => $attendance->updated_at, 'color'=>'orange'];
+          $events[] = ['title'=> "Ausente", 'start' => $attendance->created_at, 'end' => $attendance->updated_at, 'color'=>'orange'];
         } else {
-          $events[] = ['title'=> "Absent", 'start' => $attendance->created_at, 'end' => $attendance->updated_at, 'color'=>'red'];
+          $events[] = ['title'=> "Justificada", 'start' => $attendance->created_at, 'end' => $attendance->updated_at, 'color'=>'red'];
         }
       }
     } ?>
@@ -21,10 +21,18 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('attendanceCalendar');
         var attEvents = <?php if(sizeof($events) > 0){echo json_encode($events);} else {echo [];} ?>;
-      
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          plugins: [ 'dayGrid' ],
+          locale: 'pt-br',
+          timeZone: 'America/Bahia',
           events: attEvents,
+          plugins: [ 'dayGrid' ],
+          buttonText: {today: 'hoje'},
+          header: {
+            right:   'title',
+            center: '',
+            left:  'prev,next, today'
+          }
         });
         calendar.render();
       });
