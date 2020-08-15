@@ -1,6 +1,6 @@
 <h1 align="center"><img src="public/appname.svg" width="500"></h1>
 <p align="center">
-School Management and Accounting Software
+School Management and Simple Accounting Software
 </p>
 
 [![Build Status](https://travis-ci.org/changeweb/Unifiedtransform.svg?branch=master)](https://travis-ci.org/changeweb/Unifiedtransform)
@@ -32,6 +32,10 @@ See the news [here](https://laravel-news.com/unified-transform-open-source-schoo
 
 ## JS Resources
 - [Fullcalendar] (https://fullcalendar.io/docs)
+
+## Custos Vs despesas
+Os *custos* de uma empresa são os gastos ligados diretamente à produção ou à atividade-fim de uma organização, como por exemplo: compra de matéria-prima, pagamento de salários, contas de energia, entre outros.
+Já as *despesas* podem ser consideradas gastos relacionados à manutenção do negócio.
 
 ## Table of Contents
 - [Features](https://github.com/changeweb/Unifiedtransform#features)

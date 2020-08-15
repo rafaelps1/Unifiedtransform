@@ -12,7 +12,7 @@
             <div class="panel panel-default">
               @if(count($users) > 0)
               @foreach ($users as $user)
-                <div class="page-panel-title">@lang('List of all') {{ucfirst($user->role)}}s</div>
+                <div class="page-panel-title">@lang('List of all') {{ __(ucfirst($user->role)) }}es</div>
                  @break($loop->first)
               @endforeach
                 <div class="panel-body">
@@ -22,7 +22,7 @@
                         </div>
                     @endif
                     @component('components.users-export',['type'=>'teacher'])
-                        
+
                     @endcomponent
                     @component('components.users-list',['users'=>$users,'current_page'=>$current_page,'per_page'=>$per_page])
                     @endcomponent

@@ -83,7 +83,7 @@
                         @foreach ($sectors as $sector)
                             <tr>
                                 <td>{{$sector->name}}</td>
-                                <td>{{$sector->type}}</td>
+                                <td>{{ __($sector->type) }}</td>
                                 <td>
                                     <a href="{{url('accounts/edit-sector/'.$sector->id)}}" class="btn btn-danger btn-xs" role="button">@lang('Edit')</a>
                                 </td>
