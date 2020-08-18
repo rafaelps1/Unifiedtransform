@@ -118,7 +118,7 @@ $('.datepicker').datepicker({
   format: 'yyyy',
   viewMode: "years",
   minViewMode: "years",
-  autoclose:true,
+  autoclose: true,
 });
 $("#btnPrint").on("click", function () {
             var divContents = $("#printDiv").html();

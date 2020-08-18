@@ -536,7 +536,7 @@
 <script>
     $(function () {
         $('#birthday').datepicker({
-            format: "yyyy-mm-dd",
+            format: "dd-mm-yyyy",
         });
         $('#session').datepicker({
             format: "yyyy",
