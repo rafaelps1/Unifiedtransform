@@ -270,3 +270,5 @@ Route::middleware(['auth', 'student'])->prefix('stripe')->group(function () {
     Route::post('charge', 'CashierController@store');
     Route::get('receipts', 'PaymentController@index');
 });
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
