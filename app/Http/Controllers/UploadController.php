@@ -33,12 +33,12 @@ class UploadController extends Controller {
     $upload_dir = 'school-'.auth()->user()->school_id.'/'.date("Y").'/'.$request->upload_type;
 
     $path = \Storage::disk('public')->putFile($upload_dir, $request->file('file'));//$request->file('file')->store($upload_dir);
-    
+
     if($request->upload_type == 'notice'){
       $request->validate([
         'title' => 'required|string',
       ]);
-      
+
       $tb = new \App\Notice;
       $tb->file_path = 'storage/'.$path;
       $tb->title = $request->title;
@@ -86,7 +86,7 @@ class UploadController extends Controller {
         'title' => 'required|string',
         'given_to' => 'required|int',
       ]);
-      
+
       $tb = new \App\Certificate;
       $tb->file_path = 'storage/'.$path;
       $tb->title = $request->title;
@@ -127,10 +127,10 @@ class UploadController extends Controller {
             Excel::import(new StudentsImport, $path);
           else if($request->type == 'teacher')
             Excel::import(new TeachersImport, $path);
-            
+
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $failures = $e->failures();
-            
+
             foreach ($failures as $failure) {
                 $failure->row(); // row that went wrong
                 $failure->attribute(); // either heading key (if using heading row concern) or column index
@@ -138,7 +138,7 @@ class UploadController extends Controller {
                 $failure->values(); // The values of the row that has failed.
             }
         }
-        
+
         return back()->with('status', __('Students are added successfully!'));
     }
 

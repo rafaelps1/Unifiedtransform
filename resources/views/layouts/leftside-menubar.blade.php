@@ -137,7 +137,7 @@
     </ul>
   </li>
   @endif
-   
+
   @if(Auth::user()->role == 'admin' || Auth::user()->role == 'accountant')
   <li class="nav-item dropdown">
     <a role="button" href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -177,7 +177,7 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{url('user/'.Auth::user()->id.'/notifications')}}">
-      <i class="material-icons">email</i> 
+      <i class="material-icons">email</i>
       <span class="nav-link-text">Notifications</span>
       <?php
         $mc = \App\Notification::where('student_id',Auth::user()->id)->where('active',1)->count();

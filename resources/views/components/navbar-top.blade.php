@@ -32,7 +32,7 @@
                 <li class="nav-item">
                     <a href="{{url('user/'.\Auth::user()->id.'/notifications')}}" class="nav-link nav-link-align-btn"
                         role="button">
-                        <i class="material-icons text-muted">email</i>
+                        <i class="material-icons text-muted">@lang('email')</i>
                         <?php
                             $mc = \App\Notification::where('student_id',\Auth::user()->id)->where('active',1)->count();
                         ?>
@@ -76,7 +76,7 @@
                         <li>
                             <a href="{{url('user/config/impersonate')}}">
                                 {{ app('impersonate')->isImpersonating() ? __('Leave Impersonation') : __('Impersonate') }}
-                            </a>                                
+                            </a>
                         </li>
                         @endif
                         <li>

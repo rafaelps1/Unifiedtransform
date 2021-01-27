@@ -8,7 +8,7 @@ use Mavinoo\Batch\Batch as Batch;
 use Illuminate\Support\Facades\Log;
 
 class UserService {
-    
+
     protected $user;
     protected $student_info;
     protected $db;
@@ -69,9 +69,9 @@ class UserService {
     public function promoteSectionStudentsView($students, $classes, $section_id){
         return view('school.promote-students', compact('students','classes','section_id'));
     }
-    
+
     public function promoteSectionStudentsPost($request)
-    {   
+    {
         if ($request->section_id > 0) {
             $students = $this->getSectionStudentsWithStudentInfo($request, $request->section_id);
             $i = 0;
@@ -89,7 +89,7 @@ class UserService {
                 ++$i;
             }
             $this->promoteSectionStudentsPostDBTransaction();
-            
+
             return back()->with('status', 'Saved');
         }
     }
@@ -166,7 +166,7 @@ class UserService {
 
     public function getSectionStudentsWithStudentInfo($request, $section_id){
 		$ignoreSessions = $request->session()->get('ignoreSessions');
-		
+
         if (isset($ignoreSessions) && $ignoreSessions == "true") {
 			return $this->user->with(['section'])
                 ->join('student_infos', 'users.id', '=', 'student_infos.student_id')
@@ -257,11 +257,11 @@ class UserService {
         $tb->pic_path = (!empty($request->pic_path)) ? $request->pic_path : '';
         $tb->verified = 1;
         $tb->department_id = (!empty($request->department_id))?$request->department_id:0;
-        
+
         if($role == 'teacher'){
             $tb->section_id = ($request->class_teacher_section_id != 0) ? $request->class_teacher_section_id : 0;
         }
-        
+
         $tb->save();
         return $tb;
     }
