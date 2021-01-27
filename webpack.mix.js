@@ -28,3 +28,5 @@ mix.styles([
 mix.styles([
     'resources/assets/theme/application/css/loader.css',
 ], 'public/css/loader.css')
+
+mix.sass('resources/assets/sass/app.scss', 'public/css/costume.css')
