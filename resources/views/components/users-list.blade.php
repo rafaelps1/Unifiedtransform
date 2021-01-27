@@ -136,7 +136,7 @@
         @endif
       @endif
       @if (!Session::has('section-attendance'))
-      <td><small>{{ucfirst($user->gender)}}</small></td>
+      <td><small>{{ __(ucfirst($user->gender)) }}</small></td>
       <td><small>{{$user->blood_group}}</small></td>
       <td><small>{{$user->phone_number}}</small></td>
       <td><small>{{$user->address}}</small></td>

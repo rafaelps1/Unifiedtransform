@@ -32,7 +32,7 @@
                 <li class="nav-item">
                     <a href="{{url('user/'.\Auth::user()->id.'/notifications')}}" class="nav-link nav-link-align-btn"
                         role="button">
-                        <i class="material-icons text-muted">email</i>
+                        <i class="material-icons text-muted">@lang('email')</i>
                         <?php
                             $mc = \App\Notification::where('student_id',\Auth::user()->id)->where('active',1)->count();
                         ?>
@@ -46,7 +46,7 @@
                     <a href="#" class="nav-link dropdown-toggle nav-link-align-btn" data-toggle="dropdown" role="button"
                         aria-expanded="false" aria-haspopup="true">
                         <span class="label label-danger">
-                            {{ ucfirst(\Auth::user()->role) }}
+                            {{ __(ucfirst(\Auth::user()->role)) }}
                         </span>&nbsp;&nbsp;
                         @if(!empty(Auth::user()->pic_path))
                         <img src="{{asset('01-progress.gif')}}" data-src="{{url(Auth::user()->pic_path)}}" alt="Profile Picture"
@@ -76,7 +76,7 @@
                         <li>
                             <a href="{{url('user/config/impersonate')}}">
                                 {{ app('impersonate')->isImpersonating() ? __('Leave Impersonation') : __('Impersonate') }}
-                            </a>                                
+                            </a>
                         </li>
                         @endif
                         <li>

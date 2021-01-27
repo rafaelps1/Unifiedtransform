@@ -40,7 +40,7 @@ class AccountController extends Controller
     {
         $this->accountService->storeSector($request->validated());
 
-        return back()->with('status', 'Account Sector Created Successfully.');
+        return back()->with('status', __('Account Sector Created Successfully.'));
     }
 
     /**
@@ -62,7 +62,7 @@ class AccountController extends Controller
     {
         $this->accountService->updateSector($sector, $request->validated());
 
-        return back()->with('status', 'Account Sector Updated Successfully.');
+        return back()->with('status', __('Account Sector Updated Successfully.'));
     }
 
     /**
@@ -76,7 +76,7 @@ class AccountController extends Controller
     {
         $sector->delete();
 
-        return redirect('/accounts/sectors')->with('status', 'Account Sector Deleted Successfully.');
+        return redirect('/accounts/sectors')->with('status', __('Account Sector Deleted Successfully.'));
     }
 
     public function income()
@@ -99,7 +99,7 @@ class AccountController extends Controller
         $this->accountService->account_type = 'income';
         $this->accountService->storeAccount();
 
-        return back()->with('status', 'Income saved Successfully.');
+        return back()->with('status', __('Income saved Successfully.)'));
     }
 
     public function listIncome()
@@ -130,7 +130,7 @@ class AccountController extends Controller
         $this->accountService->request = $request;
         $this->accountService->updateAccount();
 
-        return back()->with('status', 'Income Updated Successfully.');
+        return back()->with('status', __('Income Updated Successfully.') );
     }
 
     public function deleteIncome($id)
@@ -138,7 +138,7 @@ class AccountController extends Controller
         $income = Account ::find($id);
         $income->delete();
 
-        return back()->with('status', 'Income Deleted Successfully.');
+        return back()->with('status', __('Income Deleted Successfully.') );
     }
 
     public function expense()
@@ -156,7 +156,7 @@ class AccountController extends Controller
         $this->accountService->account_type = 'expense';
         $this->accountService->storeAccount();
 
-        return back()->with('status', 'expense saved Successfully.');
+        return back()->with('status', __('expense saved Successfully.'));
     }
 
     public function listExpense()
@@ -187,7 +187,7 @@ class AccountController extends Controller
         $this->accountService->request = $request;
         $this->accountService->updateAccount();
 
-        return back()->with('status', 'expense Updated Successfully.');
+        return back()->with('status', __('expense Updated Successfully.'));
     }
 
     public function deleteExpense($id)
@@ -195,6 +195,6 @@ class AccountController extends Controller
         $expense = Account ::find($id);
         $expense->delete();
 
-        return back()->with('status', 'expense Deleted Successfully.');
+        return back()->with('status', __('expense Deleted Successfully.'));
     }
 }

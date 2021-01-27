@@ -9,7 +9,7 @@
         @elseif($upload_type == 'routine' && $parent == 'section')
           <th scope="col">@lang('section')</th>
         @elseif($upload_type == 'certificate')
-          <th scope="col">Certificates</th>
+          <th scope="col">@lang('Certificates')</th>
         @endif
         <th scope="col">@lang('Is Active')</th>
         <th scope="col">@lang('Action')</th>

@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-10" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">Give Certificate</div>
+                <div class="page-panel-title">@lang('Give Certificate')</div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">

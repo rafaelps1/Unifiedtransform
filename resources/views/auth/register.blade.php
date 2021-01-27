@@ -237,7 +237,8 @@
                                 <select id="version" class="form-control" name="version">
                                     <option selected="selected">@lang('Bangla')</option>
                                     <option>@lang('English')</option>
-									<option>@lang('Spanish')</option>
+									<option>@lang('Portuguese')</option>
+                                    <option>@lang('Spanish')</option>
                                 </select>
 
                                 @if ($errors->has('version'))
@@ -535,7 +536,7 @@
 <script>
     $(function () {
         $('#birthday').datepicker({
-            format: "yyyy-mm-dd",
+            format: "dd-mm-yyyy",
         });
         $('#session').datepicker({
             format: "yyyy",

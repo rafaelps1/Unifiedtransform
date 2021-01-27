@@ -152,7 +152,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
                         @if($user->role == 'student')
 
                         <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }}">
@@ -401,19 +401,17 @@
 <script>
     $(function () {
         $('#birthday').datepicker({
-            format: "yyyy-mm-dd",
+            format: "dd-mm-yyyy",
         });
         $('#birthday').datepicker('setDate',
-            "@php if(isset($user->studentInfo['birthday'])){echo Carbon\Carbon::parse($user->studentInfo['birthday'])->format('Y-d-m');} @endphp
-");
+            "@php if(isset($user->studentInfo['birthday'])){echo Carbon\Carbon::parse($user->studentInfo['birthday'])->format('Y-d-m');} @endphp");
         $('#session').datepicker({
             format: "yyyy",
             viewMode: "years",
             minViewMode: "years"
         });
         $('#session').datepicker('setDate',
-            "@php if(isset($user->studentInfo['session'])){echo Carbon\Carbon::parse($user->studentInfo['session'])->format('Y');} @endphp
-");
+            "@php if(isset($user->studentInfo['session'])){echo Carbon\Carbon::parse($user->studentInfo['session'])->format('Y');} @endphp");
     });
 </script>
 @endsection

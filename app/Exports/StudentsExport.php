@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 class StudentsExport implements FromQuery,ShouldAutoSize,WithHeadings
 {
     private $headings = [
-        'Name', 
+        'Name',
         'Email',
         'Phone Number',
         'Gender',
@@ -23,7 +23,7 @@ class StudentsExport implements FromQuery,ShouldAutoSize,WithHeadings
     ];
 
     private $headingsES = [ //for spanish
-        'Nombre', 
+        'Nombre',
         'Correo',
         'Tefelono',
         'Genero',
@@ -34,10 +34,22 @@ class StudentsExport implements FromQuery,ShouldAutoSize,WithHeadings
         'Dirección'
     ];
 
+    private $headingsPt = [ //for pt
+        'Nome',
+        'Email',
+        'Telefone',
+        'Gênero',
+        'Matrícula',
+        'Grupo Sanguíneo',
+        'Aula',
+        'Turma',
+        'Endereço'
+    ];
+
     public function __construct(int $year){
         $this->year = $year;
     }
-    
+
     public function query()
     {
         return User::query()->select('users.name','users.email','users.phone_number','users.gender','users.student_code','users.blood_group','sections.section_number','classes.class_number','users.address')
@@ -51,8 +63,11 @@ class StudentsExport implements FromQuery,ShouldAutoSize,WithHeadings
 
     public function headings() : array
     {
-		$myLocale = App::getLocale(); 
-		if ($myLocale == "es-MX") {
+        $myLocale = App::getLocale();
+
+        if($myLocale == "pt-BR-MX") {
+            return $this->headingsPt; //pt-BR
+        } elseif ($myLocale == "es-MX") {
 			return $this->headingsES; //spanish
 		} else {
 			return $this->headings;	//english

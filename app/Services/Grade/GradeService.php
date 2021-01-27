@@ -91,7 +91,7 @@ class GradeService {
 
   public function getGradeSystemBySchoolIdGroupByName($grades){
     $grade_system_name = isset($grades[0]->course->grade_system_name) ? $grades[0]->course->grade_system_name : false;
-    
+
     return ($grade_system_name)?Gradesystem::where('school_id', auth()->user()->school_id)
                         ->where('grade_system_name', $grade_system_name)
                         //->groupBy('grade_system_name')
@@ -207,7 +207,7 @@ class GradeService {
         $this->fieldCount = $this->ctCount;
         $this->maxFieldNum = 5;
         $this->ctSum = $this->getMarkSum();
-        
+
         // Percentage related calculation
         // Attendance
         $this->full_field_mark = $course->att_fullmark;
@@ -245,7 +245,7 @@ class GradeService {
         $this->avg_field_sum = $this->grade['practical'];
         $this->final_default_value = $this->grade['practical'];
         $this->final_practical_mark = $this->getFieldFinalMark();
-        
+
         // Calculate total marks
         $totalMarks = $this->getTotalCalculatedMarks();
 
@@ -277,7 +277,7 @@ class GradeService {
     public function getFieldFinalMark(){
       return ($this->full_field_mark > 0)? (($this->field_percentage*$this->avg_field_sum)/$this->full_field_mark) : $this->final_default_value;
     }
-      
+
     public function getTotalCalculatedMarks(){
       return round(
         (round($this->final_att_mark, 8, 2)+

@@ -4,7 +4,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">@lang('File Name')</th>
-        <th scope="col">Received Date</th>
+        <th scope="col">@lang('Received Date')</th>
       </tr>
     </thead>
     <tbody>

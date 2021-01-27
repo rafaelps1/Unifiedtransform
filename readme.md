@@ -1,6 +1,6 @@
 <h1 align="center"><img src="public/appname.svg" width="500"></h1>
 <p align="center">
-School Management and Accounting Software
+School Management and Simple Accounting Software
 </p>
 
 [![Build Status](https://travis-ci.org/changeweb/Unifiedtransform.svg?branch=master)](https://travis-ci.org/changeweb/Unifiedtransform)
@@ -29,6 +29,13 @@ See the news [here](https://laravel-news.com/unified-transform-open-source-schoo
 - Mbstring PHP Extension
 - Tokenizer PHP Extension
 - XML PHP Extension
+
+## JS Resources
+- [Fullcalendar] (https://fullcalendar.io/docs)
+
+## Custos Vs despesas
+Os *custos* de uma empresa são os gastos ligados diretamente à produção ou à atividade-fim de uma organização, como por exemplo: compra de matéria-prima, pagamento de salários, contas de energia, entre outros.
+Já as *despesas* podem ser consideradas gastos relacionados à manutenção do negócio.
 
 ## Table of Contents
 - [Features](https://github.com/changeweb/Unifiedtransform#features)
@@ -138,17 +145,17 @@ In a nutshell, you only need to install Docker as well as `docker-compose` on yo
 #### Step to install:
 
 1. Run `cp .env.example .env`
-2. If you think the default setting are pretty well setup, you can run `./docker-install.sh` right away from your terminal. 
+2. If you think the default setting are pretty well setup, you can run `./docker-install.sh` right away from your terminal.
 3. Otherwise, read a section below for further information about properties you may change.
 4. Run `./docker-install.sh`
 
 #### Note
 
-Here are `.env` properties you can change: 
+Here are `.env` properties you can change:
 
 - Common Laravel `.env` properties
 - `DOCKER_WEBSERVER_HOST` defines the Unifiedtransform port address. default value: `4049`
-- `DOCKER_PHPMYADMIN_HOST` defines the PHPMyAdmin port address. default value: `5051` 
+- `DOCKER_PHPMYADMIN_HOST` defines the PHPMyAdmin port address. default value: `5051`
 
 You can also customize the database name defined on the `DB_DATABASE` property when Docker is being initialized the first time.
 
@@ -170,7 +177,7 @@ git clone https://github.com/changeweb/Unifiedtransform
 
 - Copy the contents of the `.env.example` file to create `.env` in the same directory
 
-- Run `composer install` for `developer` environment and run `composer install --optimize-autoloader --no-dev` for `production` environment to install Laravel packages (Remove **Laravel Debugbar**, **Laravel Log viewer** packages from **composer.json** and 
+- Run `composer install` for `developer` environment and run `composer install --optimize-autoloader --no-dev` for `production` environment to install Laravel packages (Remove **Laravel Debugbar**, **Laravel Log viewer** packages from **composer.json** and
 
 ```php
    //Provider

@@ -63,7 +63,7 @@ class LibrarianTest extends TestCase
     public function can_see_list_of_teachers(){
         $teacher = factory(User::class)->states('teacher')->create();
         $response = $this->get(url('/users', [$this->librarian->school_id, '0/1']));
-        
+
         $response->assertStatus(200)
                 ->assertViewHas('users')
                 ->assertSeeText(e($teacher->student_code));
@@ -75,7 +75,7 @@ class LibrarianTest extends TestCase
     public function can_see_some_personal_teacher_information(){
         $teacher = factory(User::class)->states('teacher')->create();
         $response = $this->get(url('/user', [$teacher->student_code]));
-        
+
         $response->assertStatus(200)
                 ->assertSeeText(e($teacher->student_code))
                 ->assertSeeText(e($teacher->nationality))
@@ -102,7 +102,7 @@ class LibrarianTest extends TestCase
     public function can_see_some_personal_librarian_information(){
         $librarian1 = factory(User::class)->states('librarian')->create();
         $response = $this->get(url('/user', [$librarian1->student_code]));
-        
+
         $response->assertStatus(200)
                 ->assertSeeText(e($librarian1->name))
                 ->assertSeeText(e($librarian1->nationality))
