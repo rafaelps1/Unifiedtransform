@@ -11,6 +11,6 @@ class CertificateTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Certificate::class, 50)->create();
+        factory(App\Certificate::class, 3)->create();
     }
 }
