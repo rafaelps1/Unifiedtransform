@@ -26,6 +26,6 @@ class UsersTableSeeder extends Seeder
         factory(User::class, 2)->states('accountant')->create();
         factory(User::class, 2)->states('librarian')->create();
         factory(User::class, 2)->states('teacher')->create();
-        factory(User::class, 30)->states('student')->create();
+        factory(User::class, 60)->states('student')->create();
     }
 }

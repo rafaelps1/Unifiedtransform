@@ -25,6 +25,7 @@
         });
     </script>
     <script src="{{ url('js/application.js') }}"></script>
+    <script src="https://use.fontawesome.com/07b0ce5d10.js"></script>
     @yield('after_scripts')
 </head>
 
@@ -34,11 +35,13 @@
         @include('components.navbar-top')
         @yield('content')
     </div>
+    @include('components.footer')
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons&style=normal&weight=400"
       rel="stylesheet">
     <link rel="stylesheet" href="{{ url('css/vendors.css') }}" id="bootswatch-print-id">
     <link rel="stylesheet" href="{{ url('css/application.css') }}">
+    <link rel="stylesheet" href="{{ url('css/costume.css') }}">
 </body>
 
 </html>

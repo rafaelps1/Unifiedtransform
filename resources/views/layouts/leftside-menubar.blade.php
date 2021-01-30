@@ -16,7 +16,7 @@
   }
 
   .nav-link-text {
-    padding-left: 10%;
+    padding-left: 2%;
   }
 
   #side-navbar ul>li>a {
@@ -103,6 +103,9 @@
   <li class="nav-item">
     <a class="nav-link" href="{{ url('academic/certificate') }}"><i class="material-icons">verified</i> <span class="nav-link-text">@lang('Certificate')</span></a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url('academic/certificate') }}"><i class="material-icons">verified</i> <span class="nav-link-text">Certificate</span></a>
+  </li>
   <li class="nav-item" style="border-bottom: 1px solid #dbd8d8;"></li>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('settings.index') }}"><i class="material-icons">settings</i> <span class="nav-link-text">@lang('Academic Settings')</span></a>
@@ -137,7 +140,6 @@
     </ul>
   </li>
   @endif
-
   @if(Auth::user()->role == 'admin' || Auth::user()->role == 'accountant')
   <li class="nav-item dropdown">
     <a role="button" href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i

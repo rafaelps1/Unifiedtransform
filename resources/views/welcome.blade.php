@@ -9,19 +9,18 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ url('css/welcome.css') }}">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     </head>
     <body id="gradient">
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="title m-b-md">
-                    {{substr(config('app.name'), 0, 11)}}
+                <div class="m-b-md">
+                    <!-- {{config('app.name')}} -->
+                    <img src="appname.svg" width="500">
                 </div>
-                <div class="subtitle">based on Unifiedtransform</div>
-                <div class="describe">@lang('Makes managing schools an amazing experience')</div>
+                <!-- <p style="font-size: 25px;">@lang('Makes managing schools an amazing experience')</p> -->
                 <div class="links">
                     @if (Route::has('login'))
                         @auth
@@ -30,6 +29,10 @@
                             <a href="{{ route('login') }}">@lang('Login')</a>
                         @endauth
                     @endif
+                    <a href="https://github.com/changeweb/Unifiedtransform">
+                        <i class="fa fa-github"></i>
+                        @lang('GitHub')
+                    </a>
                 </div>
             </div>
         </div>

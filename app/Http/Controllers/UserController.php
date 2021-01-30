@@ -47,7 +47,6 @@ class UserController extends Controller
      */
     public function index($school_code, $student_code, $teacher_code){
         session()->forget('section-attendance');
-
         if($this->userService->isListOfStudents($school_code, $student_code))
             return $this->userService->indexView('list.student-list', $this->userService->getStudents());
         else if($this->userService->isListOfTeachers($school_code, $teacher_code))
@@ -303,7 +302,6 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = $this->user->find($id);
-
         $classes = Myclass::query()
             ->bySchool($user->school_id)
             ->pluck('id')
@@ -332,7 +330,6 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request)
     {
-
         DB::transaction(function () use ($request) {
             $tb = $this->user->find($request->user_id);
             $tb->name = $request->name;
