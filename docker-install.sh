@@ -8,6 +8,8 @@ echo "Scaffolding your app using Docker... This will take a while..."
 sleep 1
 docker-compose up -d
 docker-compose run --rm composer install
+docker-compose run --rm composer update
+docker-compose run --rm composer fund --ignore-platform-reqs
 docker-compose run --rm artisan migrate:fresh --seed
 
 export $(grep -v '#.*' .env | xargs)
