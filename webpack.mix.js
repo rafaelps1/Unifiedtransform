@@ -30,3 +30,7 @@ mix.styles([
 ], 'public/css/loader.css')
 
 mix.sass('resources/assets/sass/app.scss', 'public/css/costume.css')
+
+if (mix.inProduction()) {
+    mix.version();
+}

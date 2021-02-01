@@ -8333,6 +8333,10 @@ button.close {
   }
 }
 
+#app {
+  padding-bottom: 40px;
+}
+
 /*
 * Tags HML
 */
@@ -8352,7 +8356,7 @@ a :focus {
 
 .navbar-default {
   background-color: #8a38a6;
-  border-bottom: 5px solid #6a2c7f;
+  border-bottom: 3px solid #6a2c7f;
 }
 
 .navbar-default .navbar-header a.navbar-brand {
@@ -8376,15 +8380,15 @@ a :focus {
 */
 
 .footer {
-  padding: rem-calc(50 0 20 0);
-  background-color: #8a38a6;
   color: white;
-  font-size: rem-calc(12);
+  font-size: 12px;
+  padding: 30px 0px 10px 0px;
+  background-color: #8a38a6;
 }
 
 .footer .title {
   text-align: left;
-  font-size: rem-calc(18);
+  font-size: 18px;
 }
 
 .footer .social-icon {
@@ -8394,14 +8398,14 @@ a :focus {
 
 .footer .social-icon a {
   display: inline-block;
-  padding: rem-calc(5);
+  padding: 5px;
   color: white;
 }
 
 .footer .acount-icon a {
   display: block;
-  font-size: rem-calc(18);
-  padding: rem-calc(5);
+  font-size: 18px;
+  padding: 5px;
   text-decoration: none;
   color: white;
 }
@@ -8430,7 +8434,6 @@ a :focus {
 .footer .payment li a {
   text-decoration: none;
   display: inline-block;
-  float: left;
   padding: 10px 10px;
   color: white;
 }

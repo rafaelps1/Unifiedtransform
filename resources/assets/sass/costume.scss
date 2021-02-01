@@ -1,8 +1,11 @@
+#app {
+  padding-bottom: 40px;
+}
+
 @mixin link-default {
   color: $gray-light-1;
   :hover, :focus { color: $gray-light-2; }
 }
-
 
 /*
 * Tags HML
@@ -16,7 +19,7 @@ a { @include link-default; }
 
 .navbar-default {
   background-color: $purple;
-  border-bottom: 5px solid $purple-dark2;
+  border-bottom: 3px solid $purple-dark2;
 
   .navbar-header {
     a.navbar-brand {
@@ -42,64 +45,64 @@ a { @include link-default; }
 */
 
 .footer {
-    padding: rem-calc(50 0 20 0);
-    background-color: $purple;
-    color: white;
-    font-size: rem-calc(12);
+  color: white;
+  font-size: 12px;
+  padding: 30px 0px 10px 0px;
+  background-color: $purple;
 
-    .title {
-      text-align: left;
-      font-size: rem-calc(18);
+  .title {
+    text-align: left;
+    font-size: 18px;
+  }
+
+  .social-icon {
+    padding: 0;
+    margin: 0;
+
+    a {
+      display: inline-block;
+      padding: 5px;
+      color: white;
     }
+  }
 
-    .social-icon {
-      padding: 0;
-      margin: 0;
+  .acount-icon a {
+    display: block;
+    font-size: 18px;
+    padding: 5px;
+    text-decoration: none;
+    color: white;
+    .fa{ margin-right: 25px; }
+  }
 
+  .category a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 1px;
+    border-radius:4px;
+    margin-top: 6px;
+    background-color: black;
+    border: solid 1px #fff;
+  }
+
+  .payment {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+
+    li {
       a {
+        text-decoration: none;
         display: inline-block;
-        padding: rem-calc(5);
+        // float: left;
+        padding: 10px 10px;
         color: white;
       }
     }
+  }
 
-    .acount-icon a {
-      display: block;
-      font-size: rem-calc(18);
-      padding: rem-calc(5);
-      text-decoration: none;
-      color: white;
-      .fa{ margin-right: 25px; }
-    }
-
-    .category a {
-      text-decoration: none;
-      display: inline-block;
-      padding: 5px 20px;
-      margin: 1px;
-      border-radius:4px;
-      margin-top: 6px;
-      background-color: black;
-      border: solid 1px #fff;
-    }
-
-    .payment {
-      margin: 0px;
-      padding: 0px;
-      list-style-type: none;
-
-      li {
-        a {
-            text-decoration: none;
-            display: inline-block;
-            float: left;
-            padding: 10px 10px;
-            color: white;
-        }
-      }
-    }
-
-    .copyright {
-      background-color: $purple-dark1;
-    }
+  .copyright {
+    background-color: $purple-dark1;
+  }
 }
