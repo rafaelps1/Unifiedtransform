@@ -9,6 +9,7 @@
                 @include('layouts.leftside-menubar')
             </div>
             <div class="col-md-10" id="main-container">
+                <!-- Academic Settings -->
                 <div class="panel panel-default">
                     <div class="page-panel-title">@lang('Academic Settings')</div>
                     <div class="panel-body table-responsive">
@@ -89,7 +90,7 @@
                                                                     </div>
                                                                     <div class="modal-body">
 																		<div class="form-check">
-																			<?php 
+																			<?php
 																				$checked = Session::has('ignoreSessions') ? (Session::get('ignoreSessions') == "true" ? "checked='checked'" : "") : "";
 																			?>
 																			<input class="form-check-input position-static" type="checkbox" name="ignoreSessionsCheck" id="ignoreSessionsId" <?php echo $checked ?>>
@@ -125,8 +126,14 @@
                                 </tr>
                             </thead>
                         </table>
-
-                        <h4>@lang('Add Users')</h4>
+                    </div>
+                </div>
+                <!-- Academic Settings -->
+                
+                <!-- Add Users -->
+                <div class="panel panel-default">
+                    <div class="page-panel-title">@lang('Add Users')</div>
+                    <div class="panel-body table-responsive">
                         <table class="table table-condensed" style="width:600px">
                             <thead>
                                 <tr>
@@ -161,8 +168,14 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <!-- Add Users -->
 
-                        <h4>@lang('Upload')</h4>
+                <!-- Upload -->
+                <div class="panel panel-default">
+                    <div class="page-panel-title">@lang('Upload')</div>
+                    <div class="panel-body table-responsive">
                         <table class="table table-condensed" style="width:400px">
                             <thead>
                                 <tr>
@@ -187,9 +200,11 @@
                         </table>
                     </div>
                 </div>
+                <!-- Upload -->
             </div>
         </div>
     </div>
+
 	<script>
 		$(document).ready(function(){
 		  $("#ignoreSessionsId").change(function() {
@@ -207,6 +222,6 @@
 					}
 				});
 			});
-		});	
+		});
 	</script>
 @endsection

@@ -14,7 +14,7 @@
 a { @include link-default; }
 
 /*
-* Navbar Top
+* Top side Menu - Navbar
 */
 
 .navbar-default {
@@ -41,9 +41,32 @@ a { @include link-default; }
 
 
 /*
+* Leftside Menu
+*/
+.nav-item.active {
+  background-color: #fce8e6;
+  font-weight: bold;
+
+  a { color: #d93025; }
+}
+
+.nav-link-text {
+  font-size: 14px;
+  padding-left: 2%;
+}
+
+#side-navbar ul {
+  li {
+    a {
+      padding: 7px 10px;
+    }
+  }
+}
+
+
+/*
 * Footer
 */
-
 .footer {
   color: white;
   font-size: 12px;

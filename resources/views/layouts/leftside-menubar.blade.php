@@ -5,24 +5,7 @@
     $('a[href="' + window.location.href + '"]').closest('li').addClass('active');
   });
 </script>
-<style>
-  .nav-item.active {
-    background-color: #fce8e6;
-    font-weight: bold;
-  }
 
-  .nav-item.active a {
-    color: #d93025;
-  }
-
-  .nav-link-text {
-    padding-left: 2%;
-  }
-
-  #side-navbar ul>li>a {
-    padding: 8px 15px;
-  }
-</style>
 {{--@if(Auth::user()->role != 'master')
 <ul class="nav flex-column">
   <li class="nav-item">
@@ -102,9 +85,6 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ url('academic/certificate') }}"><i class="material-icons">verified</i> <span class="nav-link-text">@lang('Certificate')</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ url('academic/certificate') }}"><i class="material-icons">verified</i> <span class="nav-link-text">Certificate</span></a>
   </li>
   <li class="nav-item" style="border-bottom: 1px solid #dbd8d8;"></li>
   <li class="nav-item">

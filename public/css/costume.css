@@ -8351,7 +8351,7 @@ a :focus {
 }
 
 /*
-* Navbar Top
+* Top side Menu - Navbar
 */
 
 .navbar-default {
@@ -8373,6 +8373,28 @@ a :focus {
 .navbar-default .navbar-nav > li > a :hover,
 .navbar-default .navbar-nav .open > a :hover {
   color: white !important;
+}
+
+/*
+* Leftside Menu
+*/
+
+.nav-item.active {
+  background-color: #fce8e6;
+  font-weight: bold;
+}
+
+.nav-item.active a {
+  color: #d93025;
+}
+
+.nav-link-text {
+  font-size: 14px;
+  padding-left: 2%;
+}
+
+#side-navbar ul li a {
+  padding: 7px 10px;
 }
 
 /*
