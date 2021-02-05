@@ -1,9 +1,11 @@
 <script>
-  $(document).ready(function () {
-    $('.nav-item.active').removeClass('active');
-    $('a[href="' + window.location.href + '"]').closest('li').closest('ul').closest('li').addClass('active');
-    $('a[href="' + window.location.href + '"]').closest('li').addClass('active');
-  });
+  (function($) {
+    $(document).ready(function () {
+      $('.nav-item.active').removeClass('active');
+      $('a[href="' + window.location.href + '"]').closest('li').closest('ul').closest('li').addClass('active');
+      $('a[href="' + window.location.href + '"]').closest('li').addClass('active');
+    });
+  })(jQuery);
 </script>
 
 {{--@if(Auth::user()->role != 'master')

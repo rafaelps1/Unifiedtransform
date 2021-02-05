@@ -114,22 +114,24 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 <script>
-$('.datepicker').datepicker({
-  format: 'yyyy',
-  viewMode: "years",
-  minViewMode: "years",
-  autoclose:true,
-});
-$("#btnPrint").on("click", function () {
-            var divContents = $("#printDiv").html();
-            var printWindow = window.open('', '', 'height=400,width=800');
-            printWindow.document.write('<html><head><title>@lang('Income List')</title>');
-            printWindow.document.write('</head><body>');
-            printWindow.document.write('</body></html>');
-            printWindow.document.close();
-            printWindow.document.body.innerHTML = divContents;
-            printWindow.print();
-        });
+  (function($) {
+    $('.datepicker').datepicker({
+      format: 'yyyy',
+      viewMode: "years",
+      minViewMode: "years",
+      autoclose:true,
+    });
+    $("#btnPrint").on("click", function () {
+        var divContents = $("#printDiv").html();
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>"@lang('Income List')"</title>');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.document.body.innerHTML = divContents;
+        printWindow.print();
+    });
+  })(jQuery);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
