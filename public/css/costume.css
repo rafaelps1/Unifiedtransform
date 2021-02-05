@@ -8357,6 +8357,7 @@ a :focus {
 .navbar-default {
   background-color: #8a38a6;
   border-bottom: 3px solid #6a2c7f;
+  margin-bottom: 2px;
 }
 
 .navbar-default .navbar-header a.navbar-brand {
@@ -8379,6 +8380,16 @@ a :focus {
 * Leftside Menu
 */
 
+#side-navbar {
+  background-color: #f6f2ff !important;
+  padding-top: 2%;
+  margin-bottom: 2px;
+}
+
+#side-navbar ul li a {
+  padding: 7px 10px;
+}
+
 .nav-item.active {
   background-color: #fce8e6;
   font-weight: bold;
@@ -8391,10 +8402,6 @@ a :focus {
 .nav-link-text {
   font-size: 14px;
   padding-left: 2%;
-}
-
-#side-navbar ul li a {
-  padding: 7px 10px;
 }
 
 /*

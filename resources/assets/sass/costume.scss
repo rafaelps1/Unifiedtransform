@@ -20,6 +20,7 @@ a { @include link-default; }
 .navbar-default {
   background-color: $purple;
   border-bottom: 3px solid $purple-dark2;
+  margin-bottom: 2px;
 
   .navbar-header {
     a.navbar-brand {
@@ -43,6 +44,18 @@ a { @include link-default; }
 /*
 * Leftside Menu
 */
+#side-navbar {
+  background-color: #f6f2ff !important;
+  padding-top: 2%;
+  margin-bottom: 2px;
+
+  ul {
+    li {
+      a { padding: 7px 10px; }
+    }
+  }
+}
+
 .nav-item.active {
   background-color: #fce8e6;
   font-weight: bold;
@@ -53,14 +66,6 @@ a { @include link-default; }
 .nav-link-text {
   font-size: 14px;
   padding-left: 2%;
-}
-
-#side-navbar ul {
-  li {
-    a {
-      padding: 7px 10px;
-    }
-  }
 }
 
 
