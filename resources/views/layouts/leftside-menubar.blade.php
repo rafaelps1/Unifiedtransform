@@ -21,21 +21,8 @@
     <a class="nav-link" href="{{ url('home') }}"><i class="material-icons">dashboard</i> <span class="nav-link-text">@lang('Dashboard')</span></a>
   </li>
   @if(Auth::user()->role == 'admin')
-  <li class="nav-item dropdown">
-    <a role="button" href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-        class="material-icons">date_range</i> <span class="nav-link-text">@lang('Attendance')</span> <i class="material-icons pull-right">keyboard_arrow_down</i></a>
-    <ul class="dropdown-menu" style="width: 100%;">
-      <li class="nav-item">
-        <a class="dropdown-item" href="#"><i class="material-icons">contacts</i> <span class="nav-link-text">@lang('Teacher Attendance')</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="dropdown-item" href="{{url('school/sections?att=1')}}"><i class="material-icons">contacts</i> <span
-            class="nav-link-text">@lang('Student Attendance')</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="dropdown-item" href="#"><i class="material-icons">account_balance_wallet</i> <span class="nav-link-text">@lang('Staff Attendance')</span></a>
-      </li>
-    </ul>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url('school/sections?att=1') }}"><i class="material-icons">contacts</i> <span class="nav-link-text">@lang('Attendance')</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ url('school/sections?course=1') }}"><i class="material-icons">class</i> <span class="nav-link-text">@lang('Classes &amp; Sections')</span></a>
