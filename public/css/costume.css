@@ -8337,6 +8337,12 @@ button.close {
   padding-bottom: 40px;
 }
 
+.login {
+  margin: 100px auto 155px auto;
+  width: 80%;
+  padding: 30px 8px;
+}
+
 /*
 * Tags HML
 */

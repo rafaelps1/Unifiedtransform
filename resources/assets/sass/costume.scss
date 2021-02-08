@@ -2,14 +2,19 @@
   padding-bottom: 40px;
 }
 
-@mixin link-default {
-  color: $gray-light-1;
-  :hover, :focus { color: $gray-light-2; }
+.login {
+  margin: 100px auto 155px auto;
+  width: 80%;
+  padding: 30px 8px;
 }
 
 /*
 * Tags HML
 */
+@mixin link-default {
+  color: $gray-light-1;
+  :hover, :focus { color: $gray-light-2; }
+}
 
 a { @include link-default; }
 
