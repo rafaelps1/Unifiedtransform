@@ -41,8 +41,8 @@ class StudentsExport implements FromQuery,ShouldAutoSize,WithHeadings
         'Gênero',
         'Matrícula',
         'Grupo Sanguíneo',
-        'Aula',
-        'Turma',
+        'Tuma',
+        'Classe',
         'Endereço'
     ];
 

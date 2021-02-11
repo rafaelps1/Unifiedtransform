@@ -99,7 +99,7 @@ class AccountController extends Controller
         $this->accountService->account_type = 'income';
         $this->accountService->storeAccount();
 
-        return back()->with('status', __('Income saved Successfully.)'));
+        return back()->with('status', __('Income saved Successfully.'));
     }
 
     public function listIncome()

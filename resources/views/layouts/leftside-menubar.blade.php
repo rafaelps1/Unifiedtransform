@@ -116,28 +116,29 @@
     <ul class="dropdown-menu" style="width: 100%;">
       <!-- Dropdown menu links -->
       <li>
+          <a class="dropdown-item" href="{{ url('accounts/sectors') }}"><i class="material-icons">developer_board</i>
+              <span class="nav-link-text">@lang('Add Account Sector')</span></a>
+      </li>
+      <li>
         <a class="dropdown-item" href="{{url('users/'.Auth::user()->school->code.'/accountant')}}"><i class="material-icons">account_balance_wallet</i>
           <span class="nav-link-text">@lang('Accountant List')</span></a>
       </li>
       <li>
-        <a class="dropdown-item" href="{{ url('accounts/sectors') }}"><i class="material-icons">developer_board</i>
-		<span class="nav-link-text">@lang('Add Account Sector')</span></a>
+          <a class="dropdown-item" href="{{ url('accounts/expense-list') }}"><i class="material-icons">developer_board</i>
+              <span class="nav-link-text">@lang('Expense List')</span></a>
+      </li>
+      <li>
+          <a class="dropdown-item" href="{{ url('accounts/income-list') }}"><i class="material-icons">developer_board</i>
+              <span class="nav-link-text">@lang('Income List')</span></a>
       </li>
       <li>
         <a class="dropdown-item" href="{{ url('accounts/expense') }}"><i class="material-icons">note_add</i> <span
             class="nav-link-text">@lang('Add New Expense')</span></a>
       </li>
       <li>
-        <a class="dropdown-item" href="{{ url('accounts/expense-list') }}"><i class="material-icons">developer_board</i>
-          <span class="nav-link-text">@lang('Expense List')</span></a>
-      </li>
-      <li>
         <a class="dropdown-item" href="{{ url('accounts/income') }}"><i class="material-icons">note_add</i> <span class="nav-link-text">@lang('Add New Income')</span></a>
       </li>
-      <li>
-        <a class="dropdown-item" href="{{ url('accounts/income-list') }}"><i class="material-icons">developer_board</i>
-          <span class="nav-link-text">@lang('Income List')</span></a>
-      </li>
+
     </ul>
   </li>
   @endif

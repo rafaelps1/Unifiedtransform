@@ -65,7 +65,7 @@ a { @include link-default; }
   background-color: #fce8e6;
   font-weight: bold;
 
-  a { color: #d93025; }
+  a { color: $purple-dark1; }
 }
 
 .nav-link-text {
