@@ -106,7 +106,8 @@
                           <label for="amount" class="col-md-4 control-label">@lang('Amount')</label>
 
                           <div class="col-md-6">
-                              <input id="amount" type="number" class="form-control" name="amount" value="{{ old('amount') }}" placeholder="@lang('Amount')" required>
+                              <input id="amount" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" name="amount" value="{{ old('amount') }}" placeholder="@lang('Amount')" required>
+
 
                               @if ($errors->has('amount'))
                                   <span class="help-block">
