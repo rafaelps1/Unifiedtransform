@@ -114,22 +114,24 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 <script>
-$('.datepicker').datepicker({
-  format: 'yyyy',
-  viewMode: "years",
-  minViewMode: "years",
-  autoclose:true,
-});
-$("#btnPrint").on("click", function () {
-            var divContents = $("#printDiv").html();
-            var printWindow = window.open('', '', 'height=400,width=800');
-            printWindow.document.write('<html><head><title>@lang('Income List')</title>');
-            printWindow.document.write('</head><body>');
-            printWindow.document.write('</body></html>');
-            printWindow.document.close();
-            printWindow.document.body.innerHTML = divContents;
-            printWindow.print();
-        });
+  (function($) {
+    $('.datepicker').datepicker({
+      format: 'yyyy',
+      viewMode: "years",
+      minViewMode: "years",
+      autoclose:true,
+    });
+    $("#btnPrint").on("click", function () {
+        var divContents = $("#printDiv").html();
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>"@lang('Income List')"</title>');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.document.body.innerHTML = divContents;
+        printWindow.print();
+    });
+  })(jQuery);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
@@ -141,67 +143,49 @@ $("#btnPrint").on("click", function () {
 		}
     </style>
     <script>
-        'use strict';
+      'use strict';
 
-        window.chartColors = {
-            red: 'rgb(255, 99, 132)',
-            orange: 'rgb(255, 159, 64)',
-            yellow: 'rgb(255, 205, 86)',
-            green: 'rgb(75, 192, 192)',
-            blue: 'rgb(54, 162, 235)',
-            purple: 'rgb(153, 102, 255)',
-            grey: 'rgb(201, 203, 207)'
-        };
+      var data = {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [
+          {
+            pointRadius: 0,
+            label: @json( __('Income')),
+            lineTension: 0,
+            data: [
+              @foreach( ($incomesByMonth ?? []) as $s)
+                {{ $s }},
+              @endforeach
+            ],
+            borderWidth: 1,
+            backgroundColor: 'rgb(75, 192, 192)'
+          }
+      ]};
 
-		var color = Chart.helpers.color;
-		var config = {
-			type: 'bar',
-			data: {
-				datasets: [{
-                    label: @json( __('Income')),
-					backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.green,
-					fill: false,
-					data: [@foreach($incomes as $s)
-                        {
-                            t:"{{Carbon\Carbon::parse($s->created_at)->format('Y-d-m')}}",
-                            y:{{$s->amount}}
-                        },
-                        @endforeach]
-        }]
-                },
-			options: {
-				title: {
-                    display: true,
-					text: @json( __('Income (In Dollar) in Time Scale'))
-				},
-        maintainAspectRatio: false,
-				scales: {
-					xAxes: [{
-						type: 'time',
-						time: {
-							parser: 'YYYY-DD-MM',
-							tooltipFormat: 'll HH:mm'
-						},
-						scaleLabel: {
-							display: true,
-							labelString: @json( __('Date'))
-						}
-					}],
-					yAxes: [{
-						scaleLabel: {
-							display: true,
-							labelString: @json( __('Money'))
-						}
-					}]
-				},
-			}
-		};
+      var options = {
+        title: {
+          display: true,
+          text: @json( __('Income (In Dollar) in Time Scale'))
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      };
 
-		window.onload = function() {
-			var ctx = document.getElementById('canvas').getContext('2d');
-			window.myLine = new Chart(ctx, config);
+      window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myLine = new Chart(ctx, {
+          type: "bar",
+          data: data,
+          options: options
+        });
+      }
 
-		};
-	    </script>
+    </script>
 @endsection

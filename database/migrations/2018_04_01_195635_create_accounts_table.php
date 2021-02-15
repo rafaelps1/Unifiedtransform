@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type');
-            $table->integer('amount');
+            $table->double('amount', 8, 2);
             $table->text('description');
             $table->integer('school_id')->unsigned();
             $table->integer('user_id')->unsigned();

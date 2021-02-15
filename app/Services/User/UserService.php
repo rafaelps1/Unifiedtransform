@@ -89,7 +89,6 @@ class UserService {
                 ++$i;
             }
             $this->promoteSectionStudentsPostDBTransaction();
-
             return back()->with('status', 'Saved');
         }
     }
@@ -166,7 +165,6 @@ class UserService {
 
     public function getSectionStudentsWithStudentInfo($request, $section_id){
 		$ignoreSessions = $request->session()->get('ignoreSessions');
-
         if (isset($ignoreSessions) && $ignoreSessions == "true") {
 			return $this->user->with(['section'])
                 ->join('student_infos', 'users.id', '=', 'student_infos.student_id')

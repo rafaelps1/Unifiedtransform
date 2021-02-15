@@ -33,12 +33,10 @@ class UploadController extends Controller {
     $upload_dir = 'school-'.auth()->user()->school_id.'/'.date("Y").'/'.$request->upload_type;
 
     $path = \Storage::disk('public')->putFile($upload_dir, $request->file('file'));//$request->file('file')->store($upload_dir);
-
     if($request->upload_type == 'notice'){
       $request->validate([
         'title' => 'required|string',
       ]);
-
       $tb = new \App\Notice;
       $tb->file_path = 'storage/'.$path;
       $tb->title = $request->title;
@@ -137,7 +135,6 @@ class UploadController extends Controller {
                 $failure->values(); // The values of the row that has failed.
             }
         }
-
         return back()->with('status', __('Students are added successfully!'));
     }
 

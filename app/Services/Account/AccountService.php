@@ -10,15 +10,15 @@ use function auth;
 // use App\Section;
 // use App\User;
 class AccountService {
-    
+
     public $account_type;
     public $request;
-    
+
     public function getSectorsBySchoolId()
     {
         return AccountSector ::where( 'school_id', auth() -> user() -> school_id ) -> get();
     }
-    
+
     public function getAccountsBySchoolId()
     {
         return Account ::where( 'school_id', auth() -> user() -> school_id )
@@ -27,7 +27,7 @@ class AccountService {
                        -> take( 50 )
                        -> get();
     }
-    
+
     public function storeSector( $storeData )
     {
         AccountSector ::create( [
@@ -37,12 +37,12 @@ class AccountService {
             'user_id'   => auth() -> id(),
         ] );
     }
-    
+
     public function updateSector( AccountSector $accountSector, $updateData )
     {
         $accountSector -> update( $updateData );
     }
-    
+
     // public function getClassIds(){
     //     return Myclass::where('school_id', \Auth::user()->school_id)
     //                         ->pluck('id');
@@ -69,7 +69,7 @@ class AccountService {
         $income -> user_id     = auth() -> user() -> id;
         $income -> save();
     }
-    
+
     public function getAccountsByYear()
     {
         return Account ::where( 'school_id', auth() -> user() -> school_id )
@@ -77,7 +77,18 @@ class AccountService {
                        -> whereYear( 'created_at', $this -> request -> year )
                        -> get();
     }
-    
+
+    public function sumAccountsByMonths($accounts) {
+        $acountsByMonth = array_fill(0, 12, 0);
+
+        foreach ($accounts as $key => $account) {
+            $month = intval($account->created_at->format('m'));
+            $acountsByMonth[$month - 1] += $account->amount;
+        }
+
+        return $acountsByMonth;
+    }
+
     public function updateAccount()
     {
         $account                = Account ::find( $this -> request -> id );

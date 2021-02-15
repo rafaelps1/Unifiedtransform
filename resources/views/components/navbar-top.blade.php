@@ -12,7 +12,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/home') }}" style="color: #000;">
+            <a class="navbar-brand" href="{{ url('/home') }}">
                 {{ (Auth::check() && (Auth::user()->role == 'student' || Auth::user()->role == 'teacher' ||
                 Auth::user()->role == 'admin' || Auth::user()->role == 'accountant' || Auth::user()->role ==
                 'librarian'))?Auth::user()->school->name:config('app.name') }}
@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
-                <li><a href="{{ route('login') }}" style="color: #000;">@lang('Login')</a></li>
+                <li><a href="{{ route('login') }}">@lang('Login')</a></li>
                 @else
                 @if(\Auth::user()->role == 'student')
                 <li class="nav-item">
