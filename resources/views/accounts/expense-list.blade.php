@@ -141,67 +141,49 @@ $("#btnPrint").on("click", function () {
 		}
     </style>
     <script>
-        'use strict';
+      'use strict';
 
-        window.chartColors = {
-            red: 'rgb(255, 99, 132)',
-            orange: 'rgb(255, 159, 64)',
-            yellow: 'rgb(255, 205, 86)',
-            green: 'rgb(75, 192, 192)',
-            blue: 'rgb(54, 162, 235)',
-            purple: 'rgb(153, 102, 255)',
-            grey: 'rgb(201, 203, 207)'
-        };
+      var data = {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [
+          {
+            pointRadius: 0,
+            label: @json( __('Expense')),
+            lineTension: 0,
+            data: [
+              @foreach( ($expensesByMonth ?? []) as $s)
+                {{ $s }},
+              @endforeach
+            ],
+            borderWidth: 1,
+            backgroundColor: "rgba(255, 0, 0, 0.5)"
+          }
+      ]};
 
-		var color = Chart.helpers.color;
-		var config = {
-			type: 'bar',
-			data: {
-				datasets: [{
-                    label: @json( __('Expense')),
-					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.red,
-					fill: false,
-					data: [@foreach($expenses as $s)
-                        {
-                            t:"{{Carbon\Carbon::parse($s->created_at)->format('Y-d-m')}}",
-                            y:{{$s->amount}}
-                        },
-                        @endforeach]
-        }]
-                },
-			options: {
-				title: {
-                    display: true,
-					text: @json( __('Expense (In Dollar) in Time Scale'))
-				},
-        maintainAspectRatio: false,
-				scales: {
-					xAxes: [{
-						type: @json( __('time')),
-						time: {
-							parser: 'YYYY-DD-MM',
-							tooltipFormat: 'll HH:mm'
-						},
-						scaleLabel: {
-							display: true,
-							labelString: @json( __('Date'))
-						}
-					}],
-					yAxes: [{
-						scaleLabel: {
-							display: true,
-							labelString: @json( __('Money'))
-						}
-					}]
-				},
-			}
-		};
+      var options = {
+        title: {
+          display: true,
+          text: @json( __('Expense (In Dollar) in Time Scale'))
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      };
 
-		window.onload = function() {
-			var ctx = document.getElementById('canvas').getContext('2d');
-			window.myLine = new Chart(ctx, config);
+      window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myLine = new Chart(ctx, {
+          type: "bar",
+          data: data,
+          options: options
+        });
+      }
 
-		};
-	    </script>
+	  </script>
 @endsection

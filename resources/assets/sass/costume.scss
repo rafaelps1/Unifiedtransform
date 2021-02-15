@@ -1,22 +1,31 @@
+#app {
+  padding-bottom: 40px;
+}
+
+.login {
+  margin: 100px auto 155px auto;
+  width: 80%;
+  padding: 30px 8px;
+}
+
+/*
+* Tags HML
+*/
 @mixin link-default {
   color: $gray-light-1;
   :hover, :focus { color: $gray-light-2; }
 }
 
-
-/*
-* Tags HML
-*/
-
 a { @include link-default; }
 
 /*
-* Navbar Top
+* Top side Menu - Navbar
 */
 
 .navbar-default {
   background-color: $purple;
-  border-bottom: 5px solid $purple-dark2;
+  border-bottom: 3px solid $purple-dark2;
+  margin-bottom: 2px;
 
   .navbar-header {
     a.navbar-brand {
@@ -38,68 +47,95 @@ a { @include link-default; }
 
 
 /*
+* Leftside Menu
+*/
+#side-navbar {
+  background-color: #f6f2ff !important;
+  padding-top: 2%;
+  margin-bottom: 2px;
+
+  ul {
+    li {
+      a { padding: 7px 10px; }
+    }
+  }
+}
+
+.nav-item.active {
+  background-color: #fce8e6;
+  font-weight: bold;
+
+  a { color: $purple-dark1; }
+}
+
+.nav-link-text {
+  font-size: 14px;
+  padding-left: 2%;
+}
+
+
+/*
 * Footer
 */
-
 .footer {
-    padding: rem-calc(50 0 20 0);
-    background-color: $purple;
-    color: white;
-    font-size: rem-calc(12);
+  color: white;
+  font-size: 12px;
+  padding: 30px 0px 10px 0px;
+  background-color: $purple;
 
-    .title {
-      text-align: left;
-      font-size: rem-calc(18);
+  .title {
+    text-align: left;
+    font-size: 18px;
+  }
+
+  .social-icon {
+    padding: 0;
+    margin: 0;
+
+    a {
+      display: inline-block;
+      padding: 5px;
+      color: white;
     }
+  }
 
-    .social-icon {
-      padding: 0;
-      margin: 0;
+  .acount-icon a {
+    display: block;
+    font-size: 18px;
+    padding: 5px;
+    text-decoration: none;
+    color: white;
+    .fa{ margin-right: 25px; }
+  }
 
+  .category a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 1px;
+    border-radius:4px;
+    margin-top: 6px;
+    background-color: black;
+    border: solid 1px #fff;
+  }
+
+  .payment {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+
+    li {
       a {
+        text-decoration: none;
         display: inline-block;
-        padding: rem-calc(5);
+        // float: left;
+        padding: 10px 10px;
         color: white;
       }
     }
+  }
 
-    .acount-icon a {
-      display: block;
-      font-size: rem-calc(18);
-      padding: rem-calc(5);
-      text-decoration: none;
-      color: white;
-      .fa{ margin-right: 25px; }
-    }
-
-    .category a {
-      text-decoration: none;
-      display: inline-block;
-      padding: 5px 20px;
-      margin: 1px;
-      border-radius:4px;
-      margin-top: 6px;
-      background-color: black;
-      border: solid 1px #fff;
-    }
-
-    .payment {
-      margin: 0px;
-      padding: 0px;
-      list-style-type: none;
-
-      li {
-        a {
-            text-decoration: none;
-            display: inline-block;
-            float: left;
-            padding: 10px 10px;
-            color: white;
-        }
-      }
-    }
-
-    .copyright {
-      background-color: $purple-dark1;
-    }
+  .copyright {
+    background-color: $purple-dark1;
+  }
 }

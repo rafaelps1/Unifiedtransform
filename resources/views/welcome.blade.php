@@ -29,10 +29,6 @@
                             <a href="{{ route('login') }}">@lang('Login')</a>
                         @endauth
                     @endif
-                    <a href="https://github.com/changeweb/Unifiedtransform">
-                        <i class="fa fa-github"></i>
-                        @lang('GitHub')
-                    </a>
                 </div>
             </div>
         </div>

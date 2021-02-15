@@ -25,7 +25,7 @@
         });
     </script>
     <script src="{{ url('js/application.js') }}"></script>
-    <script src="https://use.fontawesome.com/07b0ce5d10.js"></script>
+    <script src="https://use.fontawesome.com/b78bbc135b.js"></script>
     @yield('after_scripts')
 </head>
 

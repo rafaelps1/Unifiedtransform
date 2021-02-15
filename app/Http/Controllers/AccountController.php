@@ -21,14 +21,15 @@ class AccountController extends Controller
 
     public function sectors()
     {
-        $sectors = $this->accountService->getSectorsBySchoolId();
+        $sectors                            = $this->accountService->getSectorsBySchoolId();
         $this->accountService->account_type = 'income';
-        $incomes = $this->accountService->getAccountsBySchoolId();
+        $incomes                            = $this->accountService->getAccountsBySchoolId();
         $this->accountService->account_type = 'expense';
-        $expenses = $this->accountService->getAccountsBySchoolId();
+        $expenses                           = $this->accountService->getAccountsBySchoolId();
+        $incomesByMonth                     = $this->accountService->sumAccountsByMonths($incomes);
+        $expensesByMonth                    = $this->accountService->sumAccountsByMonths($expenses);
         $sector = [];
-
-        return view('accounts.sector', compact('sectors', 'sector', 'incomes', 'expenses'));
+        return view('accounts.sector', compact('sectors', 'sector', 'incomes', 'expenses', 'incomesByMonth', 'expensesByMonth'));
     }
 
     /**
@@ -99,7 +100,7 @@ class AccountController extends Controller
         $this->accountService->account_type = 'income';
         $this->accountService->storeAccount();
 
-        return back()->with('status', __('Income saved Successfully.)'));
+        return back()->with('status', __('Income saved Successfully.'));
     }
 
     public function listIncome()
@@ -111,11 +112,11 @@ class AccountController extends Controller
 
     public function postIncome(Request $request)
     {
-        $this->accountService->request = $request;
+        $this->accountService->request      = $request;
         $this->accountService->account_type = 'income';
-        $incomes = $this->accountService->getAccountsByYear();
-
-        return view('accounts.income-list', compact('incomes'));
+        $incomes                            = $this->accountService->getAccountsByYear();
+        $incomesByMonth                    = $this->accountService->sumAccountsByMonths($incomes);
+        return view('accounts.income-list', compact('incomes', 'incomesByMonth'));
     }
 
     public function editIncome($id)
@@ -168,11 +169,11 @@ class AccountController extends Controller
 
     public function postExpense(Request $request)
     {
-        $this->accountService->request = $request;
+        $this->accountService->request      = $request;
         $this->accountService->account_type = 'expense';
-        $expenses = $this->accountService->getAccountsByYear();
-
-        return view('accounts.expense-list', compact('expenses'));
+        $expenses                           = $this->accountService->getAccountsByYear();
+        $expensesByMonth                    = $this->accountService->sumAccountsByMonths($expenses);
+        return view('accounts.expense-list', compact('expenses', 'expensesByMonth'));
     }
 
     public function editExpense($id)
