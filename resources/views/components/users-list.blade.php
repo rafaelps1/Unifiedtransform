@@ -64,7 +64,8 @@
       <td>
         <small>
           @if(!empty($user->pic_path))
-            <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" style="border-radius: 50%;" width="25px" height="25px">
+            <img src="{{asset('01-progress.gif')}}" data-src="{{ Storage::url($user->pic_path) }}" style="border-radius: 50%;" width="25px" height="25px">
+
           @else
             @if(strtolower($user->gender) == trans('male'))
               <img src="{{asset('01-progress.gif')}}" data-src="https://img.icons8.com/color/48/000000/guest-male--v1.png" style="border-radius: 50%;" width="25px" height="25px">&nbsp;

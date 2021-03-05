@@ -82,7 +82,7 @@
                                     @if(count($notices) > 0)
                                     <div class="list-group">
                                         @foreach($notices as $notice)
-                                        <a href="{{url($notice->file_path)}}" class="list-group-item" download>
+                                        <a href="{{ Storage::url($notice->file_path) }}" class="list-group-item" download>
                                             <i class="badge badge-download material-icons">
                                                 get_app
                                             </i>
@@ -107,7 +107,7 @@
                                     @if(count($events) > 0)
                                     <div class="list-group">
                                         @foreach($events as $event)
-                                        <a href="{{url($event->file_path)}}" class="list-group-item" download>
+                                        <a href="{{ Storage::url($event->file_path) }}" class="list-group-item" download>
                                             <i class="badge badge-download material-icons">
                                                 get_app
                                             </i>
@@ -130,7 +130,7 @@
                                     @if(count($routines) > 0)
                                     <div class="list-group">
                                         @foreach($routines as $routine)
-                                        <a href="{{url($routine->file_path)}}" class="list-group-item" download>
+                                        <a href="{{ Storage::url($routine->file_path) }}" class="list-group-item" download>
                                             <i class="badge badge-download material-icons">
                                                 get_app
                                             </i>
@@ -153,7 +153,7 @@
                                     @if(count($syllabuses) > 0)
                                     <div class="list-group">
                                         @foreach($syllabuses as $syllabus)
-                                        <a href="{{url($syllabus->file_path)}}" class="list-group-item" download>
+                                        <a href="{{ Storage::url($syllabus->file_path) }}" class="list-group-item" download>
                                             <i class="badge badge-download material-icons">
                                                 get_app
                                             </i>

@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-2">
     @if(!empty($user->pic_path))
-    <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="100%">
+    <img src="{{asset('01-progress.gif')}}" data-src="{{ Storage::url($user->pic_path) }}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="100%">
+
     @else
       @if(strtolower($user->gender) == trans('male'))
         <img src="{{asset('01-progress.gif')}}" data-src="https://img.icons8.com/color/48/000000/guest-male--v1.png" class="img-thumbnail" width="100%">
@@ -23,7 +24,7 @@
       @if ($user->role == 'teacher' && $user->section_id > 0)
         <small>@lang('Class Teacher of Section'): <span class="label label-info">{{ucfirst($user->section->section_number)}}</span></small>
       @endif
-      
+
       @if($user->role == "student")
        <button class="btn btn-xs btn-success pull-right" role="button" id="btnPrint"><i class="material-icons">print</i> @lang('Print Profile')</button>
        <div class="visible-print-block" id="profile-content">
@@ -74,7 +75,8 @@
             </div>
             <div class="col-xs-3">
               @if(!empty($user->pic_path))
-              <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="@lang('Profile Picture')" width="120px" height="120px">
+              <img src="{{asset('01-progress.gif')}}" data-src="{{ Storage::url($user->pic_path) }}" class="img-thumbnail" id="my-profile" alt="@lang('Profile Picture')" width="120px" height="120px">
+
               @else
               @if(strtolower($user->gender) == trans('male'))
                 <img src="{{asset('01-progress.gif')}}" data-src="https://img.icons8.com/color/48/000000/architect.png" class="img-thumbnail" id="my-profile" alt="@lang('Profile Picture')" width="120px" height="120px">
