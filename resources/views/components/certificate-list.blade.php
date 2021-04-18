@@ -12,7 +12,7 @@
       @foreach($files as $file)
       <tr>
         <td>{{($loop->index + 1)}}</td>
-        <td><a href="{{url($file->file_path)}}" target="_blank">{{$file->title}}</a></td>
+        <td><a href="{{ Storage::url($file->file_path) }}" target="_blank">{{$file->title}}</a></td>
         <td>{{$file->created_at->format('M d Y')}}</td>
       </tr>
       @endforeach

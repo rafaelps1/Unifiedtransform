@@ -9,6 +9,8 @@ networks:
 volumes:
   dbdata:
     driver: local
+  redisdata:
+    driver: local
 
 services:
 
@@ -25,6 +27,7 @@ services:
     depends_on:
       - php
       - db
+      - redis
     networks:
       - app-network
 
@@ -87,6 +90,7 @@ services:
       - .:/var/www/html
     depends_on:
       - db
+      - redis
     working_dir: /var/www/html
     user: laravel
     entrypoint: [ 'php', '/var/www/html/artisan' ]
@@ -105,5 +109,23 @@ services:
     environment:
       PMA_HOST: db
       UPLOAD_LIMIT: 3000000000
+    networks:
+      - app-network
+
+  #Redis Service
+  redis:
+    build:
+      context: .
+      dockerfile: ./docker/redis.dockerfile
+      args:
+        REDIS_PASSWORD: "${REDIS_PASSWORD}"
+    container_name: redis
+    restart: always
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - redisdata:/data
+    environment:
+      - REDIS_REPLICATION_MODE=master
     networks:
       - app-network

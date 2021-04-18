@@ -49,7 +49,8 @@
                             {{ __(ucfirst(\Auth::user()->role)) }}
                         </span>&nbsp;&nbsp;
                         @if(!empty(Auth::user()->pic_path))
-                        <img src="{{asset('01-progress.gif')}}" data-src="{{url(Auth::user()->pic_path)}}" alt="Profile Picture"
+                        <img src="{{asset('01-progress.gif')}}" data-src="{{ Storage::url(Auth::user()->pic_path) }}" alt="Profile Picture"
+
                             style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                         @else
                         @if(strtolower(Auth::user()->gender) == 'male')

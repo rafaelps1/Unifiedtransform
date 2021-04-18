@@ -10,6 +10,7 @@ use App\Imports\TeachersImport;
 use App\Exports\StudentsExport;
 use App\Exports\TeachersExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 /*
  * jQuery File Upload Plugin PHP Class
  * https://github.com/blueimp/jQuery-File-Upload
@@ -31,14 +32,16 @@ class UploadController extends Controller {
     ]);
 
     $upload_dir = 'school-'.auth()->user()->school_id.'/'.date("Y").'/'.$request->upload_type;
+    $diskLocal = '';
+    $path = Storage::putFile($upload_dir, $request->file('file'));  //$request->file('file')->store($upload_dir);
+    Storage::setVisibility($path, 'public');
 
-    $path = \Storage::disk('public')->putFile($upload_dir, $request->file('file'));//$request->file('file')->store($upload_dir);
     if($request->upload_type == 'notice'){
       $request->validate([
         'title' => 'required|string',
       ]);
       $tb = new \App\Notice;
-      $tb->file_path = 'storage/'.$path;
+      $tb->file_path = $diskLocal . $path;
       $tb->title = $request->title;
       $tb->active = 1;
       $tb->school_id = auth()->user()->school_id;
@@ -49,7 +52,7 @@ class UploadController extends Controller {
         'title' => 'required|string',
       ]);
       $tb = new \App\Event;
-      $tb->file_path = 'storage/'.$path;
+      $tb->file_path = $diskLocal . $path;
       $tb->title = $request->title;
       $tb->active = 1;
       $tb->school_id = auth()->user()->school_id;
@@ -60,7 +63,7 @@ class UploadController extends Controller {
         'title' => 'required|string',
       ]);
       $tb = new \App\Routine;
-      $tb->file_path = 'storage/'.$path;
+      $tb->file_path = $diskLocal . $path;
       $tb->title = $request->title;
       $tb->active = 1;
       $tb->school_id = auth()->user()->school_id;
@@ -72,7 +75,7 @@ class UploadController extends Controller {
         'title' => 'required|string',
       ]);
       $tb = new \App\Syllabus;
-      $tb->file_path = 'storage/'.$path;
+      $tb->file_path = $diskLocal . $path;
       $tb->title = $request->title;
       $tb->active = 1;
       $tb->school_id = auth()->user()->school_id;
@@ -85,7 +88,7 @@ class UploadController extends Controller {
         'given_to' => 'required|int',
       ]);
       $tb = new \App\Certificate;
-      $tb->file_path = 'storage/'.$path;
+      $tb->file_path = $diskLocal . $path;
       $tb->title = $request->title;
       $tb->given_to = $request->given_to;
       $tb->active = 1;
@@ -94,13 +97,14 @@ class UploadController extends Controller {
       $tb->save();
     } else if($request->upload_type == 'profile' && $request->user_id > 0){
       $tb = \App\User::find($request->user_id);
-      $tb->pic_path = 'storage/'.$path;
+      $tb->pic_path = $path;
       $tb->save();
     }
 
     return ($path)?response()->json([
-        'imgUrlpath' => url('storage/'.$path),
-        'path' => 'storage/'.$path,
+        'filename' => basename($path),
+        'imgUrlpath' => Storage::url($path),
+        'path' => Storage::url($path),
         'error' => false
     ]):response()->json([
         'imgUrlpath' => null,

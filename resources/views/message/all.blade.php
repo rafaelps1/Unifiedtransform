@@ -40,7 +40,8 @@
                                         <div class="media-left">
                                         <div class="media-object">
                                             @if(!empty($message->teacher->pic_path))
-                                                <img src="{{asset('01-progress.gif')}}" data-src="{{url($message->teacher->pic_path)}}" style="border-radius: 50%;" width="50px" height="50px">
+                                                <img src="{{asset('01-progress.gif')}}" data-src="{{ Storage::url($message->teacher->pic_path) }}" style="border-radius: 50%;" width="50px" height="50px">
+
                                             @else
                                                 @if(strtolower($message->teacher->gender) == trans('male'))
                                                 <img src="{{asset('01-progress.gif')}}" data-src="https://img.icons8.com/color/48/000000/guest-male--v1.png" style="border-radius: 50%;" width="50px" height="50px">
