@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: schools-redis
+  labels:
+    app: redis
+spec:
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector:
+    app: redis
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schools-redis
+  labels:
+    app: redis
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - image: redis
+        name: redis
+        ports:
+          - containerPort: 6379
+            name: redis
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "64Mi"
+          limits:
+            cpu: 20m
+            memory: 80Mi
+        volumeMounts:
+        - name: redis-pv
+          mountPath: /data
+      restartPolicy: Always
+      volumes:
+      - name: redis-pv
+        persistentVolumeClaim:
+          claimName: redis-pvc

@@ -1,6 +1,6 @@
 FROM redis:alpine
 
-ARG REDIS_PASSWORD=vlk!@#2021
+ARG REDIS_PASSWORD=vlk!@2021
 
 RUN mkdir -p /usr/local/etc/redis
 COPY ./docker/redis/redis.conf /usr/local/etc/redis/redis.conf
