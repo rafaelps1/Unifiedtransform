@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: artisan-php
+  labels:
+    app: artisan
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: artisan
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: artisan
+    spec:
+      containers:
+        - image: rafaelp777/php-fpm
+          name: php
+          command: ["php"]
+          args: ["/var/www/html/artisan"]
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "10Mi"
+            limits:
+              cpu: 20m
+              memory: 30Mi
+          volumeMounts:
+          - name: nginx-pv
+            mountPath: /var/www/html
+      restartPolicy: Always
+      volumes:
+      - name: nginx-pv
+        persistentVolumeClaim:
+          claimName: artisan-pvc
+

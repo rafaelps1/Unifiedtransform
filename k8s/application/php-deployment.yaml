@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpfpm
+  labels:
+    app: php
+spec:
+  ports:
+    - port: 9000
+      targetPort: 9000
+  selector:
+    app: php
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpfpm
+  labels:
+    app: php
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      containers:
+        - image: rafaelp777/php-fpm:1.0
+          name: php
+          ports:
+            - containerPort: 9000
+              name: php
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "25Mi"
+            limits:
+              cpu: 20m
+              memory: 40Mi
+          volumeMounts:
+          - name: nginx-pv
+            mountPath: /var/www/html
+      restartPolicy: Always
+      volumes:
+      - name: nginx-pv
+        persistentVolumeClaim:
+          claimName: php-pvc
+

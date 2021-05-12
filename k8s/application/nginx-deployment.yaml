@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: schools-application
+  labels:
+    app: schools
+spec:
+  ports:
+    - port: 8082
+      targetPort: 80
+  selector:
+    app: schools
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schools-application
+  labels:
+    app: schools
+spec:
+  selector:
+    matchLabels:
+      app: schools
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: schools
+    spec:
+      containers:
+      - image: rafaelp777/schools-masts:1.0.6
+        imagePullPolicy: Always
+        name: schools
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
+        envFrom:
+        - configMapRef:
+            name: application-acceptance-config
+        ports:
+          - containerPort: 80
+            name: schools
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "32Mi"
+          limits:
+            cpu: 20m
+            memory: 70Mi
+        volumeMounts:
+        - name: nginx-pv
+          mountPath: /var/www/html
+      imagePullSecrets:
+      - name: regcred
+      volumes:
+      - name: nginx-pv
+        persistentVolumeClaim:
+          claimName: nginx-pvc
