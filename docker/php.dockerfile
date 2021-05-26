@@ -9,6 +9,8 @@ RUN mkdir -p /var/www/html
 
 RUN chown laravel:laravel /var/www/html
 
+COPY --chown=laravel:laravel . /var/www/html
+
 WORKDIR /var/www/html
 
 RUN docker-php-ext-install \

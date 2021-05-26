@@ -25,16 +25,16 @@ services:
     volumes:
       - .:/var/www/html
     depends_on:
-      - php
-      - db
+      - phpfpm
+      - mysqlschools
       - redis
     networks:
       - app-network
 
   #MySQL Service
-  db:
-    image: mysql:latest
-    container_name: db
+  mysqlschools:
+    image: mysql:5.7.34
+    container_name: mysqlschools
     restart: unless-stopped
     tty: true
     ports:
@@ -42,23 +42,22 @@ services:
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
     volumes:
       - dbdata:/var/lib/mysql
     networks:
       - app-network
 
   #PHP Service
-  php:
+  phpfpm:
     build:
       context: .
       dockerfile: ./docker/php.dockerfile
-    container_name: php
+    container_name: phpfpm
     volumes:
       - .:/var/www/html
+    depends_on:
+      - mysqlschools
+      - redis
     ports:
       - "9000:9000"
     networks:
@@ -74,7 +73,7 @@ services:
       - .:/var/www/html
     working_dir: /var/www/html
     depends_on:
-      - php
+      - phpfpm
     user: laravel
     networks:
       - app-network
@@ -89,7 +88,7 @@ services:
     volumes:
       - .:/var/www/html
     depends_on:
-      - db
+      - mysqlschools
       - redis
     working_dir: /var/www/html
     user: laravel
@@ -99,16 +98,16 @@ services:
 
   #PHPMyAdmin Service
   phpmyadmin:
-    depends_on:
-      - db
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
     restart: always
     ports:
       - '${DOCKER_PHPMYADMIN_HOST}:80'
     environment:
-      PMA_HOST: db
+      PMA_HOST: mysqlschools
       UPLOAD_LIMIT: 3000000000
+    depends_on:
+      - mysqlschools
     networks:
       - app-network
 
@@ -117,15 +116,9 @@ services:
     build:
       context: .
       dockerfile: ./docker/redis.dockerfile
-      args:
-        REDIS_PASSWORD: "${REDIS_PASSWORD}"
     container_name: redis
     restart: always
     ports:
       - "${REDIS_PORT}:6379"
-    volumes:
-      - redisdata:/data
-    environment:
-      - REDIS_REPLICATION_MODE=master
     networks:
       - app-network

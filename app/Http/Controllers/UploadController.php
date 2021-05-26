@@ -33,8 +33,14 @@ class UploadController extends Controller {
 
     $upload_dir = 'school-'.auth()->user()->school_id.'/'.date("Y").'/'.$request->upload_type;
     $diskLocal = '';
-    $path = Storage::putFile($upload_dir, $request->file('file'));  //$request->file('file')->store($upload_dir);
-    Storage::setVisibility($path, 'public');
+    $local_filesystem = env('FILESYSTEM_DRIVER') == 'local';
+    if($local_filesystem) {
+      $diskLocal  = 'storage/';
+      $path       = $request->file('file')->store($upload_dir);
+    } else {
+      $path = Storage::putFile($upload_dir, $request->file('file'));
+      Storage::setVisibility($path, 'public');
+    }
 
     if($request->upload_type == 'notice'){
       $request->validate([
@@ -101,10 +107,11 @@ class UploadController extends Controller {
       $tb->save();
     }
 
+    $path_url = $diskLocal . $path;
     return ($path)?response()->json([
         'filename' => basename($path),
-        'imgUrlpath' => Storage::url($path),
-        'path' => Storage::url($path),
+        'imgUrlpath' => $local_filesystem ? url($path_url) : Storage::url($path),
+        'path' => $local_filesystem ? $path_url : Storage::url($path),
         'error' => false
     ]):response()->json([
         'imgUrlpath' => null,
