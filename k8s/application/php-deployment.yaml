@@ -31,24 +31,17 @@ spec:
         app: php
     spec:
       containers:
-        - image: rafaelp777/php-fpm:1.0
+        - image: rafaelp777/phpfpm:1.0.11
           name: php
           ports:
             - containerPort: 9000
               name: php
           resources:
             requests:
-              cpu: "10m"
-              memory: "25Mi"
+              cpu: 3m
+              memory: 100Mi
             limits:
-              cpu: 20m
-              memory: 40Mi
-          volumeMounts:
-          - name: nginx-pv
-            mountPath: /var/www/html
+              cpu: 6m
+              memory: 110Mi
       restartPolicy: Always
-      volumes:
-      - name: nginx-pv
-        persistentVolumeClaim:
-          claimName: php-pvc
 

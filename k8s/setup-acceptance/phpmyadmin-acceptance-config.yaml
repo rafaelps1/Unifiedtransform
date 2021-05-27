@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: phpmyadmin-acceptance-config
 data:
-  PMA_HOST: schools-mysql
+  PMA_HOST: mysqlschools
   PMA_PORT: '3306'
   UPLOAD_LIMIT: '3000000000'
