@@ -73,12 +73,12 @@
                         <li>
                             <a href="{{url('user/config/change_password')}}">@lang('Change Password')</a>
                         </li>
-                        @if(env('APP_ENV') != 'production')
-                        <li>
-                            <a href="{{url('user/config/impersonate')}}">
-                                {{ app('impersonate')->isImpersonating() ? __('Leave Impersonation') : __('Impersonate') }}
-                            </a>
-                        </li>
+                        @if(config('app.env') != 'production')
+                            <li>
+                                <a href="{{url('user/config/impersonate')}}">
+                                    {{ app('impersonate')->isImpersonating() ? __('Leave Impersonation') : __('Impersonate') }}
+                                </a>
+                            </li>
                         @endif
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();

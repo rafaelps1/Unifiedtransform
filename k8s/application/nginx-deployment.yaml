@@ -32,14 +32,14 @@ spec:
         app: schools
     spec:
       containers:
-      - image: rafaelp777/schools-masts:1.0.22
+      - image: rafaelp777/schools-masts:1.0.23
         imagePullPolicy: Always
         name: schools
         env:
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-secret
+              name: schoolsdb-secret
               key: password
         envFrom:
         - configMapRef:
@@ -49,10 +49,10 @@ spec:
             name: schools
         resources:
           requests:
-            cpu: 5m
+            cpu: 3m
             memory: 10Mi
           limits:
-            cpu: 10m
+            cpu: 15m
             memory: 20Mi
       imagePullSecrets:
       - name: regcred

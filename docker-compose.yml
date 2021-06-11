@@ -113,9 +113,7 @@ services:
 
   #Redis Service
   redis:
-    build:
-      context: .
-      dockerfile: ./docker/redis.dockerfile
+    image: redis
     container_name: redis
     restart: always
     ports:

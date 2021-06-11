@@ -1,3 +1,2 @@
 resources:
   - application-acceptance-config.yaml
-  - phpmyadmin-acceptance-config.yaml

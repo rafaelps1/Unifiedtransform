@@ -27,14 +27,14 @@ spec:
         app: redis
     spec:
       containers:
-      - name: master
-        image: rafaelp777/redis:1.0.3
+      - name: redis
+        image: redis
         resources:
           requests:
             cpu: 2m
-            memory: 10Mi
+            memory: 5Mi
           limits:
-            cpu: 5m
-            memory: 20Mi
+            cpu: 6m
+            memory: 15Mi
         ports:
         - containerPort: 6379

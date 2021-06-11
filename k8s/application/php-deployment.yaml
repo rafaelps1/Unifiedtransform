@@ -31,17 +31,15 @@ spec:
         app: php
     spec:
       containers:
-        - image: rafaelp777/phpfpm:1.0.11
+        - image: rafaelp777/phpfpm:1.0.12
           name: php
           ports:
             - containerPort: 9000
               name: php
           resources:
             requests:
-              cpu: 3m
-              memory: 100Mi
+              cpu: 30m
+              memory: 25Mi
             limits:
-              cpu: 6m
-              memory: 110Mi
-      restartPolicy: Always
-
+              cpu: 100m
+              memory: 80Mi

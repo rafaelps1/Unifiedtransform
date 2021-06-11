@@ -1,11 +1,5 @@
 resources:
-  - artisan-pvc.yaml
-  - nginx-pv.yaml
-  - composer-pvc.yaml
-  - nginx-pvc.yaml
-  - php-pvc.yaml
+  - regcred.yaml
   - nginx-deployment.yaml
   - php-deployment.yaml
-  - composer-deployment.yaml
-  - artisan-deployment.yaml
 

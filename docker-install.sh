@@ -6,10 +6,22 @@ fi
 
 echo "Scaffolding your app using Docker... This will take a while..."
 sleep 1
+
 docker-compose up --build -d
-docker-compose run --rm composer install
+docker-compose run --rm composer install --optimize-autoloader --no-dev
+docker-compose run --rm artisan key:generate
 docker-compose run --rm artisan config:cache
-docker-compose run --rm artisan migrate:fresh --seed
+docker-compose run --rm artisan route:cache
+docker-compose run --rm artisan view:cache
+# docker-compose run --rm artisan migrate:fresh --seed
+
+# php artisan key:generate
+# php artisan cache:clear
+# php artisan route:clear
+# php artisan config:clear
+# php artisan view:clear
+# php artisan migrate:fresh --seed
+
 # docker-compose run --rm artisan storage:link
 # docker-compose run --rm artisan route:cache
 # docker-compose run --rm artisan view:cache
