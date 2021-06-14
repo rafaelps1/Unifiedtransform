@@ -32,6 +32,7 @@
 
                         <div class="col-md-6">
                             <select id="medium" class="form-control" name="medium">
+                                <option>@lang('Portuguese')</option>
                                 <option selected="selected">@lang('Bangla')</option>
                                 <option>@lang('English')</option>
                                 <option>@lang('Hindi')</option>

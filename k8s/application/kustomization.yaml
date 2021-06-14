@@ -1,0 +1,5 @@
+resources:
+  - regcred.yaml
+  - nginx-deployment.yaml
+  - php-deployment.yaml
+

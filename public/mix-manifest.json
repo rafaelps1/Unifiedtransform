@@ -1,8 +1,8 @@
 {
-    "/css/costume.css": "/css/costume.css",
-    "/js/vendors.js": "/js/vendors.js",
-    "/css/vendors.css": "/css/vendors.css",
-    "/js/application.js": "/js/application.js",
-    "/css/application.css": "/css/application.css",
-    "/css/loader.css": "/css/loader.css"
+    "/css/costume.css": "/css/costume.css?id=8c4bca6b278a9a4c44e0",
+    "/js/vendors.js": "/js/vendors.js?id=c4b7e1a96e1121a179c4",
+    "/css/vendors.css": "/css/vendors.css?id=84a3e882d8f1d833c045",
+    "/js/application.js": "/js/application.js?id=d3b44e7a2fe8ae9273c0",
+    "/css/application.css": "/css/application.css?id=a45eb948e28a95267373",
+    "/css/loader.css": "/css/loader.css?id=5e559257107f97d1bd54"
 }

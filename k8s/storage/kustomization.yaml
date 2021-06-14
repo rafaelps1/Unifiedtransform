@@ -1,0 +1,8 @@
+resources:
+  # - persistent-volumes.yaml
+  # - mysql-pvc.yaml
+  # - mysql-secret.yaml
+  # - mysql-deployment.yaml
+  # - phpmyadmin-deployment.yaml
+  - schoolsdb-secret.yaml
+  - redis-deployment.yaml
