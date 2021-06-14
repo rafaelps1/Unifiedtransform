@@ -31,7 +31,7 @@ spec:
         app: php
     spec:
       containers:
-        - image: rafaelp777/phpfpm:1.0.12
+        - image: rafaelp777/phpfpm:r01.0.2
           name: php
           ports:
             - containerPort: 9000
@@ -41,5 +41,5 @@ spec:
               cpu: 30m
               memory: 25Mi
             limits:
-              cpu: 100m
+              cpu: 120m
               memory: 80Mi
