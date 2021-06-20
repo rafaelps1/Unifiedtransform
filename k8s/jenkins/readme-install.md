@@ -1,4 +1,4 @@
-#Deployment Jenkins in GKE withe Helm
+#Intall Jenkins in GKE withe Helm
 ##References:
 1.0 - https://www.jenkins.io/doc/book/installing/kubernetes/
 2.0 - https://faun.pub/jenkins-on-google-kubernetes-engine-gke-with-helm-a74c12cb7e64
