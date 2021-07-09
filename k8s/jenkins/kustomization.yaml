@@ -1,0 +1,4 @@
+resources:
+  - jenkins-volumes.yaml
+  - gke-jenkins-admin-role.yaml
+  - gke-jenkins-sa.yaml

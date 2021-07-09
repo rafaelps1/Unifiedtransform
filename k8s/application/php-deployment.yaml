@@ -31,7 +31,7 @@ spec:
         app: php
     spec:
       containers:
-        - image: rafaelp777/phpfpm:r01.0.2
+        - image: rafaelp777/phpfpm:1.1.0.4
           name: php
           ports:
             - containerPort: 9000

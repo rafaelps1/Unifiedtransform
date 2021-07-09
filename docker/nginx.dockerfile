@@ -9,4 +9,5 @@ RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D lara
 
 RUN chown laravel:laravel /var/www/html
 
-COPY --chown=laravel:laravel . /var/www/html
+# COPY --chown=laravel:laravel . /var/www/html
+COPY --from=rafaelp777/phpfpm:latest --chown=laravel:laravel /var/www/html /var/www/html
