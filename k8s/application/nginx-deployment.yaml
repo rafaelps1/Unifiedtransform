@@ -32,7 +32,7 @@ spec:
         app: schools
     spec:
       containers:
-      - image: rafaelp777/schools-masts:r01.0.2
+      - image: rafaelp777/schools-masts:1.1.0.4
         imagePullPolicy: Always
         name: schools
         env:
