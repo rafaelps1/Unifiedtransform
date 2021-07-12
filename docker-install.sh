@@ -9,11 +9,12 @@ sleep 1
 
 docker-compose up --build -d
 docker-compose run --rm composer install --optimize-autoloader --no-dev
-docker-compose run --rm artisan key:generate
+docker-compose run --rm artisan key:generate --force
+docker-compose run --rm artisan migrate:fresh --seed
+docker-compose run --rm artisan cache:clear
 docker-compose run --rm artisan config:cache
 docker-compose run --rm artisan route:cache
 docker-compose run --rm artisan view:cache
-# docker-compose run --rm artisan migrate:fresh --seed
 
 # php artisan key:generate
 # php artisan cache:clear
